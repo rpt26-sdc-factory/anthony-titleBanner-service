@@ -6,6 +6,6 @@ const enrolledSchema = new Schema({
   enrolled: Number
 });
 
-let Enrolled = mongoose.model('Enrolled', enrolledSchema);
+let Enrolled = mongoose.model('enrollednums', enrolledSchema);
 
 module.exports = Enrolled;

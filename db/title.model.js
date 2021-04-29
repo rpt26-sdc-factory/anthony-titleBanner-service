@@ -7,6 +7,6 @@ const titleSchema = new Schema({
 });
 
 
-let Title = mongoose.model('Title', titleSchema);
+let Title = mongoose.model('title', titleSchema);
 
 module.exports = Title;

@@ -8,7 +8,9 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "seed": "node seed/seedingScript.js",
+    "seed-titles": "node seed/titleSeedingScript.js",
+    "seed-enrolled": "node seed/enrolledSeedingScript.js",
+    "seed": "npm run seed-titles && npm run seed-enrolled",
     "react-dev": "webpack --watch",
     "start": "NODE_ENV=development nodemon ./server/index.js",
     "build": "webpack",

@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 // titles
 const generateTitleData = async (num) => {
-  await mongoose.connect('mongodb://localhost/title', { useUnifiedTopology: true, useNewUrlParser: true })
+  await mongoose.connect('mongodb://localhost/titleDB', { useUnifiedTopology: true, useNewUrlParser: true })
   // console.log(mongoose.connection.readyState);
 
   let generatedTitles = exampleDataGenerator(num);
@@ -21,7 +21,7 @@ const generateTitleData = async (num) => {
 
       } else {
         if (data) {
-          console.log(`id: ${data.id} is already in the database!`);
+          console.log(`title id: ${data.id} is already in the database!`);
 
         } else {
           Title.insertMany({
@@ -34,9 +34,6 @@ const generateTitleData = async (num) => {
       }
     });
   }
-  let generatedEnrolledNums = exampleEnrolledGenerator();
-  generateEnrolledData(generatedEnrolledNums);
-
   setTimeout(() => {
     console.log(
       `\nTitles are generated!\nHave a nice day 😀 !\n`
@@ -44,19 +41,6 @@ const generateTitleData = async (num) => {
     process.exit();
   }, 1000);
 };
-
-
-// enrolled numbers
-const generateEnrolledData = (data) => {
-  let enrolledIds = data[0].id;
-  let enrolledNums = data[0].enrolled;
-
-  for (let i = 0; i < enrolledNums.length; i++) {
-    console.log(enrolledNums[i]);
-  }
-}
-
-
 
 generateTitleData(10);
 

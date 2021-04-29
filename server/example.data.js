@@ -18,21 +18,34 @@ let exampleDataGenerator = (index) => {
   return titleName;
 };
 
-let exampleEnrolledGenerator = () => {
-  var diff = titleNameCounter - enrolledCounter;
-
+let exampleEnrolledGenerator = (index) => {
   var totalEnrolled = [{
     id: [],
     enrolled: []
   }];
-  while (diff !== 0) {
-    enrolledCounter++;
-    totalEnrolled[0].id.push(enrolledCounter);
+
+  for (let i = 0; i <= index; i++) {
+    totalEnrolled[0].id.push(i);
     totalEnrolled[0].enrolled.push(faker.random.number());
-    diff--;
   }
   return totalEnrolled;
 };
+
+// let exampleEnrolledGenerator = () => {
+//   var diff = titleNameCounter - enrolledCounter;
+
+//   var totalEnrolled = [{
+//     id: [],
+//     enrolled: []
+//   }];
+//   while (diff !== 0) {
+//     enrolledCounter++;
+//     totalEnrolled[0].id.push(enrolledCounter);
+//     totalEnrolled[0].enrolled.push(faker.random.number());
+//     diff--;
+//   }
+//   return totalEnrolled;
+// };
 
 
 
