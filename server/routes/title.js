@@ -13,7 +13,7 @@ let saveTile = (randomData, cb) => {
     const title = data;
     const id = String(idArray[index]);
 
-    Title.findOne({title: title}, (err, data) => {
+    Title.findOne({ title: title }, (err, data) => {
       if (err) { console.log(err); }
       if (data) {
         cb(`${title} already exists in db`);
@@ -31,7 +31,8 @@ let saveTile = (randomData, cb) => {
 };
 
 router.route('/getTitle/:id').get((req, res) => {
-  Title.find({id: req.params.id})
+  console.log(req);
+  Title.find({ id: req.params.id })
     .then(data => {
       res.status(200).json(data[0].title);
     })

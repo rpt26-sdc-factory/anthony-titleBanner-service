@@ -14,7 +14,7 @@ let saveEnrolled = (randomData, cb) => {
     const enrolled = data;
     const id = String(idArray[index]);
 
-    Enrolled.findOne({enrolled: enrolled}, (err, data) => {
+    Enrolled.findOne({ enrolled: enrolled }, (err, data) => {
       if (err) { console.log(err); }
       if (data) {
         cb(`${title} already exists in db`);
@@ -46,7 +46,7 @@ router.route('/getEnrolled/:id').get((req, res) => {
     }
   });
 
-  Enrolled.find({id: req.params.id})
+  Enrolled.find({ id: req.params.id })
     .then(data => res.status(200).json(data[0].enrolled))
     .catch(err => res.status(404).json(err));
 });

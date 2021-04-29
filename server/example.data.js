@@ -20,6 +20,7 @@ let exampleDataGenerator = (index) => {
 
 let exampleEnrolledGenerator = () => {
   var diff = titleNameCounter - enrolledCounter;
+
   var totalEnrolled = [{
     id: [],
     enrolled: []
@@ -32,6 +33,8 @@ let exampleEnrolledGenerator = () => {
   }
   return totalEnrolled;
 };
+
+
 
 module.exports = {
   exampleDataGenerator,
