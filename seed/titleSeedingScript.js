@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const generateTitleData = async (num) => {
   await mongoose.connect('mongodb://localhost/titleDB', { useUnifiedTopology: true, useNewUrlParser: true })
   // console.log(mongoose.connection.readyState);
-
+  numOfTitles = num;
   let generatedTitles = exampleDataGenerator(num);
 
   let titleIds = generatedTitles[0].id;

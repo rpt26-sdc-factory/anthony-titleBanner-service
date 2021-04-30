@@ -1,19 +1,21 @@
 const Title = require('../../db/title.model');
-const axios = require('axios');
 const mongoose = require('mongoose');
 
 
 exports.postTitle = async (req, res) => {
-  Title.getCollection('titles').find({}, (err, results) => {
+  await mongoose.connect('mongodb://localhost/titleDB', { useUnifiedTopology: true, useNewUrlParser: true });
+
+  Title.find({}, (err, result) => {
     if (err) {
       console.error(err);
+
     } else {
-      console.log(results)
+      let lastID = Number(result.map(title => title.id).sort((a, b) => b - a)[0]) + 1;
+      const post = new Title({ id: lastID.toString(), title: req.body.title });
+      post.save();
+      res.json({ message: `Title: ${req.body.title}, POSTED to database!` });
     }
   })
-  res.end();
-  //   let { title } = req.body;
-  //   res.send({ message: title });
 };
 
 // Update / PUT - update an item

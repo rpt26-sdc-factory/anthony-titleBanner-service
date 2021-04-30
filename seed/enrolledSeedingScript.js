@@ -3,10 +3,12 @@ const { exampleEnrolledGenerator } = require('../server/example.data');
 const mongoose = require('mongoose');
 
 
+
 // enrolled numbers
 const generateEnrolledData = async (num) => {
   await mongoose.connect('mongodb://localhost/enrolledDB', { useUnifiedTopology: true, useNewUrlParser: true })
   // console.log(mongoose.connection.readyState);
+  numOfEnrolled = num;
 
   let data = exampleEnrolledGenerator(num);
 
