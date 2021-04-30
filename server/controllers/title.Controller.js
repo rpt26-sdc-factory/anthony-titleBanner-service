@@ -21,28 +21,6 @@ exports.postTitle = async (req, res) => {
   })
 };
 
-// Update / PUT - update an item
-exports.putTitle = async (req, res) => {
-  await mongoose.connection.close()
-  await mongoose.connect('mongodb://localhost/titleDB', { useUnifiedTopology: true, useNewUrlParser: true });
-
-  Title.updateOne({ title: req.params.title }, { title: req.body.title }, (err, result) => {
-    if (err) {
-      console.error(err);
-      res.end();
-
-    } else {
-      if (!result) {
-        console.log(`"${req.params.title}" does NOT exist in database!`);
-        res.end();
-
-      } else {
-        res.json({ message: `Title: ${req.params.title}, UPDATED to Title: ${req.body.title} from the database!` })
-      }
-    }
-  })
-};
-
 // Read / GET - read an item
 exports.getTitle = async (req, res) => {
   await mongoose.connection.close()
@@ -60,6 +38,28 @@ exports.getTitle = async (req, res) => {
 
       } else {
         res.json(result);
+      }
+    }
+  })
+};
+
+// Update / PUT - update an item
+exports.putTitle = async (req, res) => {
+  await mongoose.connection.close()
+  await mongoose.connect('mongodb://localhost/titleDB', { useUnifiedTopology: true, useNewUrlParser: true });
+
+  Title.updateOne({ title: req.params.title }, { title: req.body.title }, (err, result) => {
+    if (err) {
+      console.error(err);
+      res.end();
+
+    } else {
+      if (!result) {
+        console.log(`"${req.params.title}" does NOT exist in database!`);
+        res.end();
+
+      } else {
+        res.json({ message: `Title: ${req.params.title}, UPDATED to Title: ${req.body.title} from the database!` })
       }
     }
   })

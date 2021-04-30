@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 
 
 
-exports.postEnrolled = (req, res) => {
+exports.postEnrolled = async (req, res) => {
+  await mongoose.connection.close()
+  await mongoose.connect('mongodb://localhost/enrolledDB', { useUnifiedTopology: true, useNewUrlParser: true });
+
 
 };
 
@@ -29,8 +32,25 @@ exports.getEnrolled = async (req, res) => {
   })
 };
 
-exports.putEnrolled = (req, res) => {
+exports.putEnrolled = async (req, res) => {
+  await mongoose.connection.close()
+  await mongoose.connect('mongodb://localhost/enrolledDB', { useUnifiedTopology: true, useNewUrlParser: true });
 
+  Enrolled.updateOne({ enrolled: req.params.enrolled }, { enrolled: req.body.enrolled }, (err, result) => {
+    if (err) {
+      console.error(err);
+      res.end();
+
+    } else {
+      if (!result) {
+        console.log(`"${req.params.enrolled}" does NOT exist in database!`);
+        res.end();
+
+      } else {
+        res.json({ message: `Enrolled: ${req.params.enrolled}, UPDATED to Enrolled: ${req.body.enrolled} from the database!` })
+      }
+    }
+  })
 };
 
 exports.deleteEnrolled = async (req, res) => {
@@ -48,7 +68,7 @@ exports.deleteEnrolled = async (req, res) => {
         res.end();
 
       } else {
-        res.json({ message: `Title: ${req.params.enrolled}, DELETED from the database!` })
+        res.json({ message: `Enrolled: ${req.params.enrolled}, DELETED from the database!` })
       }
     }
   })
