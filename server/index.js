@@ -8,7 +8,7 @@ var enrolled = require('./routes/enrolled');
 const mongoose = require('mongoose');
 const path = require('path');
 const dotenv = require('dotenv');
-const userRouter = require('./routes/crudRoutes');
+const userRouter = require('./routes/routes');
 
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(cors());
