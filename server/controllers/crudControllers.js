@@ -15,6 +15,7 @@ exports.postTitle = async (req, res) => {
   //   res.send({ message: title });
 };
 
+// Read / GET - read an item
 exports.getTitle = async (req, res) => {
   await mongoose.connect('mongodb://localhost/titleDB', { useUnifiedTopology: true, useNewUrlParser: true });
 
@@ -27,29 +28,34 @@ exports.getTitle = async (req, res) => {
         console.log(`"${req.params.title}" does NOT exist in database!`);
 
       } else {
-        // console.log({ title: result.title });
-        res.json(result)
+        res.json(result);
       }
     }
   })
 };
 
 
-
-
 exports.putTitle = (req, res) => {
-  console.log(req.params.title)
-  Title.findOne({ title: req.params.title }, (err, result) => {
-    if (err) {
-      console.error(err)
-    } else {
-      console.log(result)
-    }
-  })
-  res.end();
+
 };
 
-exports.deleteTitle = (req, res) => {
+// Delete / DELETE - delete an item
+exports.deleteTitle = async (req, res) => {
+  await mongoose.connect('mongodb://localhost/titleDB', { useUnifiedTopology: true, useNewUrlParser: true });
 
+  Title.deleteOne({ title: req.params.title }, (err, result) => {
+    if (err) {
+      console.error(err);
+
+    } else {
+      if (!result) {
+        console.log(`"${req.params.title}" does NOT exist in database!`);
+
+      } else {
+        console.log(`"${req.params.title}" has been DELETED from the database!`);
+        res.json({ message: 'fuck u' })
+      }
+    }
+  })
 };
 
