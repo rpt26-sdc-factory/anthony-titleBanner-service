@@ -8,6 +8,7 @@ var enrolled = require('./routes/enrolled');
 const mongoose = require('mongoose');
 const path = require('path');
 const dotenv = require('dotenv');
+const userRouter = require('./routes/crudRoutes');
 
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(cors());
@@ -25,25 +26,29 @@ app.use('/api', title);
 //TODO second table
 app.use('/api', enrolled);
 
+// CRUD routes
+app.use('/', userRouter);
+
+
 app.get('/*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../public/index.html'));
 });
 
-// // mongoose connection
-let MONGO_URI = 'mongodb://server:27017';
+// // // mongoose connection
+// let MONGO_URI = 'mongodb://server:27017';
 
-if (process.env.NODE_ENV === 'development') {
-  MONGO_URI = 'mongodb://localhost';
-}
+// if (process.env.NODE_ENV === 'development') {
+//   MONGO_URI = 'mongodb://localhost';
+// }
 
-mongoose.connect(MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false
-})
-  .then(() => console.log(`Mongo Connected to ${MONGO_URI} 😀!`))
-  .catch(() => console.error('ERROR, Mongo NOT Connected 👎!'));
+// mongoose.connect(MONGO_URI, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   useCreateIndex: true,
+//   useFindAndModify: false
+// })
+//   .then(() => console.log(`Mongo Connected to ${MONGO_URI} 😀!`))
+//   .catch(() => console.error('ERROR, Mongo NOT Connected 👎!'));
 
 
 // server connection
