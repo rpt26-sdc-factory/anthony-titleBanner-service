@@ -4,15 +4,15 @@ const { postTitle, getTitle, putTitle, deleteTitle } = require('../controllers/t
 const { postEnrolled, getEnrolled, putEnrolled, deleteEnrolled } = require('../controllers/enrolled.Controller');
 
 // Titles
-router.post('/post/', postTitle);
-router.get('/get/:title', getTitle);
-router.put('/update/:title', putTitle);
-router.delete('/delete/:title', deleteTitle);
+router.post('/postTitle/', postTitle);
+router.get('/getTitle/:title', getTitle);
+router.put('/updateTitle/:title', putTitle);
+router.delete('/deleteTitle/:title', deleteTitle);
 
 // Enrolled
-router.post('/post/:enrolled', postEnrolled);
-router.get('/get/:enrolled', getEnrolled);
-router.put('/update/:enrolled', putEnrolled);
-router.delete('/delete/:enrolled', deleteEnrolled);
+router.post('/postEnrolled/:enrolled', postEnrolled);
+router.get('/getEnrolled/:enrolled', getEnrolled);
+router.put('/updateEnrolled/:enrolled', putEnrolled);
+router.delete('/deleteEnrolled/:enrolled', deleteEnrolled);
 
 module.exports = router;
