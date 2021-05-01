@@ -28,7 +28,7 @@ it('Should POST title to database', async (done) => {
 });
 
 // READ / GET
-it('Should GET title to database', async (done) => {
+it('Should GET title from database', async (done) => {
   const searchedTitle = 'Superfake Title';
 
   const res = await request.get(`/getTitle/${searchedTitle}`);
@@ -54,13 +54,13 @@ it('Should PUT (Update) title to database', async (done) => {
 });
 
 // DELETE
-it('Should DELETE title to database', async (done) => {
+it('Should DELETE title from database', async (done) => {
   const searchedTitle = 'Updated Title';
 
   const res = await request.delete(`/deleteTitle/${searchedTitle}`);
 
   expect(res.status).toBe(200);
-  console.log(res.body)
+
   expect(res.body.message).toBe(`Title: ${searchedTitle}, DELETED from the database!`);
   done();
 });

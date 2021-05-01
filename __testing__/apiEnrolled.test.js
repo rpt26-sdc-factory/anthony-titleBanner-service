@@ -13,30 +13,59 @@ beforeAll(async () => {
 })
 
 // POST
-it('Should POST title to database', async (done) => {
+it('Should POST enrolled number to database', async (done) => {
+  const postedEnrolledNum = '18789';
 
-  done()
+  const res = await request.post('/postEnrolled')
+    .send({
+      id: '1',
+      enrolled: postedEnrolledNum,
+    });
+
+  expect(res.status).toBe(200);
+  expect(res.body.message).toBe(`Enrolled: ${postedEnrolledNum}, POSTED to database!`);
+  done();
 });
 
 // READ / GET
-it('Should GET title to database', async (done) => {
+it('Should GET enrolled number from database', async (done) => {
+  const postedEnrolledNum = '18789';
 
-  done()
+  const res = await request.get(`/getEnrolled/${postedEnrolledNum}`);
+
+  expect(res.status).toBe(200);
+  expect(res.body.enrolled.toString()).toBe(`${postedEnrolledNum}`);
+  done();
 });
 
 // PUT / Update
-it('Should PUT (Update) title to database', async (done) => {
+it('Should PUT (Update) enrolled number to database', async (done) => {
+  const searchedEnrolledNum = '18789';
+  const updatedEnrolledNum = '21987';
 
+  const res = await request.put(`/updateEnrolled/${searchedEnrolledNum}`)
+    .send({
+      enrolled: updatedEnrolledNum,
+    });
+
+  expect(res.status).toBe(200);
+  expect(res.body.message).toBe(`Enrolled: ${searchedEnrolledNum}, UPDATED to Enrolled: ${updatedEnrolledNum} from the database!`);
   done()
 });
 
 // DELETE
-it('Should DELETE title to database', async (done) => {
+it('Should DELETE title from database', async (done) => {
+  const searchedEnrolledNum = '21987';
 
-  done()
+  const res = await request.delete(`/deleteEnrolled/${searchedEnrolledNum}`);
+
+  expect(res.status).toBe(200);
+  expect(res.body.message).toBe(`Enrolled: ${searchedEnrolledNum}, DELETED from the database!`);
+  done();
 });
 
 // Cleans up database between each test
-// Cleans up database between each test
-afterEach(async () => await Enrolled.deleteMany());
-afterAll(async () => await mongoose.disconnect());
+afterAll(async () => {
+  await Enrolled.deleteMany()
+  await mongoose.disconnect()
+});
