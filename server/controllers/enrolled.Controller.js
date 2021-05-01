@@ -2,7 +2,7 @@ const Enrolled = require('../../db/enrolled.model');
 const mongoose = require('mongoose');
 
 
-
+// Create / POST - create a new item
 exports.postEnrolled = async (req, res) => {
   await mongoose.connection.close()
   await mongoose.connect('mongodb://localhost/enrolledDB', { useUnifiedTopology: true, useNewUrlParser: true });
@@ -22,10 +22,11 @@ exports.postEnrolled = async (req, res) => {
   })
 };
 
+// Read / GET - read an item
 exports.getEnrolled = async (req, res) => {
   await mongoose.connection.close()
   await mongoose.connect('mongodb://localhost/enrolledDB', { useUnifiedTopology: true, useNewUrlParser: true });
-  // console.log(req.params.enrolled)
+
   Enrolled.findOne({ enrolled: Number(req.params.enrolled) }, (err, result) => {
     if (err) {
       console.error(err);
@@ -44,6 +45,7 @@ exports.getEnrolled = async (req, res) => {
   })
 };
 
+// Update / PUT - update an item
 exports.putEnrolled = async (req, res) => {
   await mongoose.connection.close()
   await mongoose.connect('mongodb://localhost/enrolledDB', { useUnifiedTopology: true, useNewUrlParser: true });
@@ -65,6 +67,7 @@ exports.putEnrolled = async (req, res) => {
   })
 };
 
+// Delete / DELETE - delete an item
 exports.deleteEnrolled = async (req, res) => {
   await mongoose.connection.close()
   await mongoose.connect('mongodb://localhost/enrolledDB', { useUnifiedTopology: true, useNewUrlParser: true });

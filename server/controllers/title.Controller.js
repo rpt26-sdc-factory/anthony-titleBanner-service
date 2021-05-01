@@ -1,7 +1,7 @@
 const Title = require('../../db/title.model');
 const mongoose = require('mongoose');
 
-
+// Create / POST - create a new item
 exports.postTitle = async (req, res) => {
   await mongoose.connection.close()
   await mongoose.connect('mongodb://localhost/titleDB', { useUnifiedTopology: true, useNewUrlParser: true });

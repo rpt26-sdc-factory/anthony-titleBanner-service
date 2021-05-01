@@ -1,13 +1,12 @@
 # Project Name
 
-> Project description
+> anthony-titleBanner-service
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/rpt26-sdc-factory/vbao-instructor-service
+  - https://github.com/rpt26-sdc-factory/kim-syllabi-service
+  - https://github.com/rpt26-sdc-factory/james-about-service
 
 ## Table of Contents
 
@@ -17,7 +16,6 @@
 
 ## Usage
 
-> Some usage instructions
 
 ## Requirements
 
@@ -43,3 +41,44 @@ npm install
 
 ## license
 ![NPM](https://img.shields.io/npm/l/express)
+
+## CRUD APIs - Titles
+
+- Type: POST
+- Endpoint: /postTitle
+- Expectation: a title and id to be posted to the titlesDB.
+
+- Type: GET
+- Endpoint: /getTitle/:title'
+- Expectation: a title searched and returned from the titlesDB.
+
+- Type: PUT
+- Endpoint: /updateTitle/:title
+- Expectation: a title searched and updated from the titlesDB.
+
+- Type: DELETE
+- Endpoint: /deleteTitle/:title
+- Expectation: a title searched and deleted from the titlesDB.
+
+## CRUD APIs - Enrolled Numbers
+
+- Type: POST
+- Endpoint: /postEnrolled
+- Expectation: an enrolled number and id to be posted to the enrolledDB.
+
+- Type: GET
+- Endpoint: /getEnrolled/:enrolled
+- Expectation: an enrolled number searched and returned from the enrolledDB.
+
+- Type: PUT
+- Endpoint: /updateEnrolled/:enrolled
+- Expectation: an enrolled number searched and updated from the enrolledDB.
+
+- Type: DELETE
+- Endpoint: /deleteEnrolled/:enrolled
+- Expectation: an enrolled number searched and deleted from the enrolledDB.
+
+
+
+
+

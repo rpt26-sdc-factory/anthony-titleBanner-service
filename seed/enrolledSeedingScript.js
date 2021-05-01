@@ -8,8 +8,6 @@ const mongoose = require('mongoose');
 const generateEnrolledData = async (num) => {
   await mongoose.connect('mongodb://localhost/enrolledDB', { useUnifiedTopology: true, useNewUrlParser: true })
   // console.log(mongoose.connection.readyState);
-  numOfEnrolled = num;
-
   let data = exampleEnrolledGenerator(num);
 
   let enrolledIds = data[0].id;
