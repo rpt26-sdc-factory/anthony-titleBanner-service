@@ -16,7 +16,11 @@
     "build": "webpack",
     "test": "node_modules/jest/bin/jest.js",
     "test-debug": "jest --detectOpenHandles",
+    "test-api": "jest --detectOpenHandles __testing__",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "dependencies": {
     "@babel/preset-env": "^7.13.10",
