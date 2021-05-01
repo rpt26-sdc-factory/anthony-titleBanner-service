@@ -43,7 +43,7 @@ npm install
 ![NPM](https://img.shields.io/npm/l/express)
 
 ## CRUD APIs - Titles
-
+```
 - Type: POST
 - Endpoint: /postTitle
 - Expectation: a title and id to be posted to the titlesDB.
@@ -59,9 +59,10 @@ npm install
 - Type: DELETE
 - Endpoint: /deleteTitle/:title
 - Expectation: a title searched and deleted from the titlesDB.
+```
 
 ## CRUD APIs - Enrolled Numbers
-
+```
 - Type: POST
 - Endpoint: /postEnrolled
 - Expectation: an enrolled number and id to be posted to the enrolledDB.
@@ -77,6 +78,7 @@ npm install
 - Type: DELETE
 - Endpoint: /deleteEnrolled/:enrolled
 - Expectation: an enrolled number searched and deleted from the enrolledDB.
+```
 
 
 
