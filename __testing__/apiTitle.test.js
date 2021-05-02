@@ -67,6 +67,5 @@ it('Should DELETE title from database', async (done) => {
 
 // Cleans up database between each test
 afterAll(async () => {
-  await Title.deleteMany()
   await mongoose.disconnect()
 });
