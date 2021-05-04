@@ -1,10 +1,10 @@
-var express = require('express');
-var cors = require('cors');
+const express = require('express');
+const cors = require('cors');
 
-var app = express();
-var bodyParser = require('body-parser');
-var title = require('./routes/title');
-var enrolled = require('./routes/enrolled');
+const app = express();
+const bodyParser = require('body-parser');
+const title = require('./routes/title');
+const enrolled = require('./routes/enrolled');
 const mongoose = require('mongoose');
 const path = require('path');
 const dotenv = require('dotenv');
@@ -34,6 +34,15 @@ app.get('/*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../public/index.html'));
 });
 
+// server connection
+const PORT = process.env.PORT || 3001;
+
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => {
+    console.log(`\nListening on PORT ${PORT} 👍!`);
+  });
+}
+
 // // // mongoose connection
 // let MONGO_URI = 'mongodb://server:27017';
 
@@ -51,10 +60,14 @@ app.get('/*', (req, res) => {
 //   .catch(() => console.error('ERROR, Mongo NOT Connected 👎!'));
 
 
-// server connection
-app.listen(port, () => {
-  console.log(`\nListening on PORT ${port} 👍!`);
-});
+// export out for jest api tests
+module.exports = app;
+
+
+
+
+
+
 
 
 // mongo environment variables
