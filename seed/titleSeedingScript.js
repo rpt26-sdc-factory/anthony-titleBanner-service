@@ -1,6 +1,6 @@
 const Title = require('../db/title.model');
 const Enrolled = require('../db/enrolled.model');
-const { exampleDataGenerator, exampleEnrolledGenerator } = require('../server/example.data');
+const { exampleDataGenerator } = require('../server/example.data');
 const mongoose = require('mongoose');
 
 
@@ -27,8 +27,8 @@ const generateTitleData = async (num) => {
             id: titleIds[i].toString(),
             title: titles[i],
           })
-            .then(() => console.log(`Page ${titles[i]} saved!`))
-            .catch(() => console.error(`Error Page ${titles[i]}, NOT saved!`));
+            .then(() => console.log(`${titles[i]} saved!`))
+            .catch(() => console.error(`Error ${titles[i]}, NOT saved!`));
         }
       }
     });
@@ -41,7 +41,7 @@ const generateTitleData = async (num) => {
   }, 1000);
 };
 
-generateTitleData(10);
+generateTitleData(1000);
 
 
 

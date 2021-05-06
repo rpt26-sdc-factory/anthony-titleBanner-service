@@ -15,7 +15,7 @@ app.use(cors());
 
 let port = 3001;
 
-dotenv.config();
+dotenv.config({ path: '__config__/config.env' });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -43,6 +43,10 @@ if (process.env.NODE_ENV !== 'test') {
   });
 }
 
+// export out for jest api tests
+module.exports = app;
+
+
 // // // mongoose connection
 // let MONGO_URI = 'mongodb://server:27017';
 
@@ -58,12 +62,6 @@ if (process.env.NODE_ENV !== 'test') {
 // })
 //   .then(() => console.log(`Mongo Connected to ${MONGO_URI} 😀!`))
 //   .catch(() => console.error('ERROR, Mongo NOT Connected 👎!'));
-
-
-// export out for jest api tests
-module.exports = app;
-
-
 
 
 

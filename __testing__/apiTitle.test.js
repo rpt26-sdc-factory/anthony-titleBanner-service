@@ -12,6 +12,7 @@ beforeAll(async () => {
   await mongoose.connect(MONGO_URI, { useUnifiedTopology: true, useNewUrlParser: true });
 })
 
+
 // POST
 it('Should POST title to database', async (done) => {
   const postedTitle = 'Superfake Title';
