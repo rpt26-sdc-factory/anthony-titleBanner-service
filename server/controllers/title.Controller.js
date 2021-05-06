@@ -12,11 +12,18 @@ exports.postTitle = async (req, res) => {
       res.end();
 
     } else {
-      let lastID = Number(result.map(title => title.id).sort((a, b) => b - a)[0]) + 1;
-      const post = new Title({ id: lastID.toString(), title: req.body.title });
+      if (result.length === 0) {
+        const post = new Title({ id: '1', title: req.body.title });
 
-      post.save();
-      res.json({ message: `Title: ${req.body.title}, POSTED to database!` });
+        post.save();
+        res.json({ message: `Title: ${req.body.title}, POSTED to database!` })
+      } else {
+        let lastID = Number(result.map(title => title.id).sort((a, b) => b - a)[0]) + 1;
+        const post = new Title({ id: lastID.toString(), title: req.body.title });
+
+        post.save();
+        res.json({ message: `Title: ${req.body.title}, POSTED to database!` });
+      }
     }
   })
 };

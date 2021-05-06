@@ -8,16 +8,26 @@ exports.postEnrolled = async (req, res) => {
   await mongoose.connect('mongodb://localhost/enrolledDB', { useUnifiedTopology: true, useNewUrlParser: true });
 
   Enrolled.find({}, (err, result) => {
+    console.log(result)
     if (err) {
       console.error(err);
       res.end();
 
     } else {
-      let lastID = Number(result.map(enrollNum => enrollNum.id).sort((a, b) => b - a)[0]) + 1;
-      const post = new Enrolled({ id: lastID.toString(), enrolled: req.body.enrolled });
+      if (result.length === 0) {
 
-      post.save();
-      res.json({ message: `Enrolled: ${req.body.enrolled}, POSTED to database!` });
+        const post = new Enrolled({ id: '1', enrolled: req.body.enrolled });
+
+        post.save();
+        res.json({ message: `Enrolled: ${req.body.enrolled}, POSTED to database!` });
+
+      } else {
+        let lastID = Number(result.map(enrollNum => enrollNum.id).sort((a, b) => b - a)[0]) + 1;
+        const post = new Enrolled({ id: lastID.toString(), enrolled: req.body.enrolled });
+
+        post.save();
+        res.json({ message: `Enrolled: ${req.body.enrolled}, POSTED to database!` });
+      }
     }
   })
 };
