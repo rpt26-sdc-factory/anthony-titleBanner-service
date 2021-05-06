@@ -15,7 +15,7 @@ app.use(cors());
 
 let port = 3001;
 
-dotenv.config({ path: '__config__/config.env' });
+dotenv.config({ path: 'config/config.env' });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
