@@ -12,6 +12,7 @@ beforeAll(async () => {
   await mongoose.connect(MONGO_URI, { useUnifiedTopology: true, useNewUrlParser: true });
 })
 
+
 // POST
 it('Should POST title to database', async (done) => {
   const postedTitle = 'Superfake Title';
@@ -67,5 +68,6 @@ it('Should DELETE title from database', async (done) => {
 
 // Cleans up database between each test
 afterAll(async () => {
+  await Title.deleteMany()
   await mongoose.disconnect()
 });

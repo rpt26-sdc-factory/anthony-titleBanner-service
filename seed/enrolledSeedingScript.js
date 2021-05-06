@@ -26,8 +26,8 @@ const generateEnrolledData = async (num) => {
             id: enrolledIds[i].toString(),
             enrolled: enrolledNums[i],
           })
-            .then(() => console.log(`Page ${titles[i]} saved!`))
-            .catch(() => console.error(`Error Page ${titles[i]}, NOT saved!`));
+            .then(() => console.log(`${enrolledNums[i]} saved!`))
+            .catch(() => console.error(`Error ${enrolledNums[i]}, NOT saved!`));
         }
       }
     })
@@ -41,4 +41,4 @@ const generateEnrolledData = async (num) => {
   }, 1000);
 }
 
-generateEnrolledData(10)
+generateEnrolledData(1000)
