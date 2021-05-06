@@ -17,7 +17,7 @@
     "build": "webpack",
     "test": "node_modules/jest/bin/jest.js",
     "test-debug": "jest --detectOpenHandles",
-    "test-api": "jest --detectOpenHandles __testing__",
+    "test-api": "jest __testing__",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "jest": {
