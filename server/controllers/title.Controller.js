@@ -39,7 +39,7 @@ exports.getTitle = async (req, res) => {
       res.end();
 
     } else {
-      if (result.length === 0) {
+      if (result === null) {
         console.log(`"${req.params.title}" does NOT exist in database!`);
         res.end();
 
@@ -61,7 +61,7 @@ exports.putTitle = async (req, res) => {
       res.end();
 
     } else {
-      if (result.length === 0) {
+      if (result === null) {
         console.log(`"${req.params.title}" does NOT exist in database!`);
         res.end();
 
@@ -83,7 +83,7 @@ exports.deleteTitle = async (req, res) => {
       res.end();
 
     } else {
-      if (result.length === 0) {
+      if (result === null) {
         console.log(`"${req.params.title}" does NOT exist in database!`);
         res.end();
 

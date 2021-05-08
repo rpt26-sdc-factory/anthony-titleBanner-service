@@ -43,7 +43,7 @@ exports.getEnrolled = async (req, res) => {
       res.end();
 
     } else {
-      if (result.length === 0) {
+      if (result === null) {
         console.log(`${req.params.enrolled} does NOT exist in database!`);
         res.end();
 
@@ -66,7 +66,7 @@ exports.putEnrolled = async (req, res) => {
       res.end();
 
     } else {
-      if (result.length === 0) {
+      if (result === null) {
         console.log(`"${req.params.enrolled}" does NOT exist in database!`);
         res.end();
 
@@ -88,7 +88,7 @@ exports.deleteEnrolled = async (req, res) => {
       res.end();
 
     } else {
-      if (result.length === 0) {
+      if (result === null) {
         console.log(`"${req.params.enrolled}" does NOT exist in database!`);
         res.end();
 
