@@ -29,7 +29,7 @@ it('Should POST enrolled number to database', async (done) => {
 
 // READ / GET
 it('Should GET enrolled number from database', async (done) => {
-  const postedEnrolledNum = '18789';
+  const postedEnrolledNum = 18789;
 
   const res = await request.get(`/getEnrolled/${postedEnrolledNum}`);
 
