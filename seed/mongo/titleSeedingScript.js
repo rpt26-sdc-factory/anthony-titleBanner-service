@@ -1,6 +1,5 @@
-const Title = require('../db/title.model');
-const Enrolled = require('../db/enrolled.model');
-const { exampleDataGenerator } = require('../server/example.data');
+const Title = require('../../db/title.model');
+const { exampleDataGenerator } = require('../../server/example.data');
 const mongoose = require('mongoose');
 
 

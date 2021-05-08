@@ -7,15 +7,12 @@ const title = require('./routes/title');
 const enrolled = require('./routes/enrolled');
 const mongoose = require('mongoose');
 const path = require('path');
-const dotenv = require('dotenv');
 const userRouter = require('./routes/routes');
 
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(cors());
 
 let port = 3001;
-
-dotenv.config({ path: 'config/config.env' });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -39,6 +36,7 @@ const PORT = process.env.PORT || 3001;
 
 if (process.env.NODE_ENV !== 'test') {
   app.listen(PORT, () => {
+    console.log(__dirname)
     console.log(`\nListening on PORT ${PORT} 👍!`);
   });
 }

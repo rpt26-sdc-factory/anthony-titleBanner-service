@@ -7,6 +7,6 @@ let numOfRecords = 10000000;
 exampleDataGenerator(numOfRecords);
 exampleEnrolledGenerator(numOfRecords);
 
-let finish = new Date().getTime();
+let end = new Date().getTime();
 
-console.log(`${finish - start} milliseconds for ${numOfRecords} records!`);
+console.log(`${end - start} milliseconds for ${numOfRecords} records!`);

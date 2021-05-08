@@ -60,7 +60,7 @@ exports.putEnrolled = async (req, res) => {
   await mongoose.connection.close()
   await mongoose.connect('mongodb://localhost/enrolledDB', { useUnifiedTopology: true, useNewUrlParser: true });
 
-  Enrolled.updateOne({ enrolled: req.params.enrolled }, { enrolled: req.body.enrolled }, (err, result) => {
+  Enrolled.updateOne({ enrolled: Number(req.params.enrolled) }, { enrolled: Number(req.body.enrolled) }, (err, result) => {
     if (err) {
       console.error(err);
       res.end();
