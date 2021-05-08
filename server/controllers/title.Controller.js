@@ -41,7 +41,7 @@ exports.getTitle = async (req, res) => {
     } else {
       if (result === null) {
         console.log(`"${req.params.title}" does NOT exist in database!`);
-        res.end();
+        res.status(404).end();
 
       } else {
         res.json(result);
@@ -63,7 +63,7 @@ exports.putTitle = async (req, res) => {
     } else {
       if (result === null) {
         console.log(`"${req.params.title}" does NOT exist in database!`);
-        res.end();
+        res.status(404).end();
 
       } else {
         res.json({ message: `Title: ${req.params.title}, UPDATED to Title: ${req.body.title} from the database!` })
@@ -85,7 +85,7 @@ exports.deleteTitle = async (req, res) => {
     } else {
       if (result === null) {
         console.log(`"${req.params.title}" does NOT exist in database!`);
-        res.end();
+        res.status(404).end();
 
       } else {
         res.json({ message: `Title: ${req.params.title}, DELETED from the database!` })
