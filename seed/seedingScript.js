@@ -17,8 +17,8 @@ const saveToCSV = (num) => {
 };
 
 // npm run csv
-saveToCSV(10);
+// saveToCSV(10);
 
 // npm run csv-plus
-// saveToCSV(10000000);
+saveToCSV(10000000);
 
