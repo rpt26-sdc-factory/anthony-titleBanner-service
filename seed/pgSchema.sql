@@ -14,9 +14,6 @@ CREATE TABLE titles(
 
 -- COPY CSV to POSTGRES DATABASE
 \copy titles FROM 'seed/__data__/titles.csv' WITH (FORMAT csv, HEADER);
--- \copy titles FROM 'seed/__data__/titles/titles-1.csv' WITH (FORMAT csv, HEADER);
--- \copy titles FROM 'seed/__data__/titles/titles-2.csv' WITH (FORMAT csv, HEADER);
-
 
 -- ENROLLED NUMBERS
 DROP DATABASE IF EXISTS enrolled_database;
@@ -31,8 +28,6 @@ CREATE TABLE enrolled(
 
 -- COPY CSV to POSTGRES DATABASE
 \copy enrolled FROM 'seed/__data__/enrolled.csv' WITH (FORMAT csv, HEADER);
--- \copy enrolled FROM 'seed/__data__/enrolled/enrolled-1.csv' WITH (FORMAT csv, HEADER);
--- \copy enrolled FROM 'seed/__data__/enrolled/enrolled-2.csv' WITH (FORMAT csv, HEADER);
 
 -- connect back to postgres database
 \c postgres
