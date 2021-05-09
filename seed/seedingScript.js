@@ -4,20 +4,28 @@ const path = require('path');
 
 
 const saveToCSV = (num) => {
+  fs.writeFileSync('seed/__data__/titles.csv', '"id","title"\n');
+  fs.writeFileSync('seed/__data__/enrolled.csv', '"id","enrolled"\n');
+
   let start = new Date().getTime();
+  let titles = '';
+  let enrolled = '';
 
   for (let i = 1; i <= 2; i++) {
     let iterationStart = new Date().getTime();
     let portion = num / 2;
 
-    let titles = titlesCSV(portion, i);
-    let enrolled = enrolledCSV(portion, i);
+    let generatedTitles = titlesCSV(portion, i);
+    let generatedEnrolled = enrolledCSV(portion, i);
 
-    fs.writeFileSync(path.resolve(__dirname, '__data__', 'titles', `titles-${i}.csv`), titles);
-    fs.writeFileSync(path.resolve(__dirname, '__data__', 'enrolled', `enrolled-${i}.csv`), enrolled);
+    fs.appendFileSync('seed/__data__/titles.csv', generatedTitles);
+    fs.appendFileSync('seed/__data__/enrolled.csv', generatedEnrolled);
+
+    // fs.writeFileSync(path.resolve(__dirname, '__data__', 'titles', `titles-${i}.csv`), titles);
+    // fs.writeFileSync(path.resolve(__dirname, '__data__', 'enrolled', `enrolled-${i}.csv`), enrolled);
 
     let iterationEnd = new Date().getTime();
-    console.log(`\n${portion} records, ${(iterationEnd - iterationStart) / 1000} seconds 👍!`);
+    console.log(`${portion} records, ${(iterationEnd - iterationStart) / 1000} seconds 👍!`);
   }
 
   let end = new Date().getTime();
