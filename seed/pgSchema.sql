@@ -1,3 +1,6 @@
+-- Start Time
+SELECT now();
+
 -- TITLES
 DROP DATABASE IF EXISTS titles_database;
 CREATE DATABASE titles_database;
@@ -29,6 +32,9 @@ CREATE TABLE enrolled(
 
 -- connect back to postgres database
 \c postgres
+
+-- End Time
+SELECT now();
 
 
 -- login command: psql -U postgres
