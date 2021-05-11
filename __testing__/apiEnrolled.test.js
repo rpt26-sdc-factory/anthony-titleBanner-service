@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const app = require('../server/index');
 const supertest = require('supertest');
 const request = supertest(app);
-const Enrolled = require('../db/enrolled.model');
+const Enrolled = require('../db/mongo/enrolled.model');
 
 
 // connect to db prior to tests
