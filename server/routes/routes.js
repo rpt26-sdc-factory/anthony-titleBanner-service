@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { postTitle, getTitle, putTitle, deleteTitle } = require('../controllers/title.Controller');
-const { postEnrolled, getEnrolled, putEnrolled, deleteEnrolled } = require('../controllers/enrolled.Controller');
+const { postTitle, getTitle, putTitle, deleteTitle } = require('../controllers/mongo/title.Controller');
+const { postEnrolled, getEnrolled, putEnrolled, deleteEnrolled } = require('../controllers/mongo/enrolled.Controller');
 
 // Titles
 router.post('/postTitle', postTitle);

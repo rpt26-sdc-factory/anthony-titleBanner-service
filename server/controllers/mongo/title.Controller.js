@@ -1,4 +1,4 @@
-const Title = require('../../db/title.model');
+const Title = require('../../../db/title.model');
 const mongoose = require('mongoose');
 
 // Create / POST - create a new item
