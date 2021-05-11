@@ -1,21 +1,22 @@
 const { Pool } = require('pg');
 const dotenv = require('dotenv');
-dotenv.config({ path: './configs/config.env' });
+const path = require('path');
+dotenv.config({ path: __dirname + '/../../config/config.env' });
 
 const titlesPool = new Pool({
-  user: process.env.USER,
-  password: process.env.POSTGRES_SQL_PASSWORD,
+  user: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
   database: process.env.TITLES_DATABASE,
-  host: process.env.HOST,
-  port: process.env.PORT,
+  host: process.env.POSTGRES_HOST,
+  port: process.env.POSTGRES_PORT,
 });
 
 const enrolledPool = new Pool({
-  user: process.env.USER,
-  password: process.env.POSTGRES_SQL_PASSWORD,
+  user: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
   database: process.env.ENROLLED_DATABASE,
-  host: process.env.HOST,
-  port: process.env.PORT,
+  host: process.env.POSTGRES_HOST,
+  port: process.env.POSTGRES_PORT,
 });
 
 module.exports = { titlesPool, enrolledPool };
