@@ -1,4 +1,4 @@
-const Enrolled = require('../../../db/enrolled.model');
+const Enrolled = require('../../../db/mongo/enrolled.model');
 const mongoose = require('mongoose');
 
 

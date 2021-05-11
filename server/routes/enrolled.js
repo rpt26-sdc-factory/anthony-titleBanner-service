@@ -1,7 +1,7 @@
 
 const router = require('express').Router();
 
-let Enrolled = require('../../db/enrolled.model');
+let Enrolled = require('../../db/mongo/enrolled.model');
 
 const { exampleEnrolledGenerator } = require('../example.data');
 

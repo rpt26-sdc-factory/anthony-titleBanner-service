@@ -1,5 +1,5 @@
 -- Start Time
-SELECT now();
+SELECT EXTRACT(MILLISECONDS FROM now());
 
 -- TITLES
 DROP DATABASE IF EXISTS titles_database;
@@ -33,7 +33,7 @@ CREATE TABLE enrolled(
 \c postgres
 
 -- End Time
-SELECT now();
+SELECT EXTRACT(MILLISECONDS FROM now());
 
 
 -- login command: psql -U postgres

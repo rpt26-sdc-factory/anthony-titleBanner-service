@@ -21,9 +21,6 @@ const saveToCSV = (num) => {
     fs.appendFileSync('seed/__data__/titles.csv', generatedTitles);
     fs.appendFileSync('seed/__data__/enrolled.csv', generatedEnrolled);
 
-    // fs.writeFileSync(path.resolve(__dirname, '__data__', 'titles', `titles-${i}.csv`), titles);
-    // fs.writeFileSync(path.resolve(__dirname, '__data__', 'enrolled', `enrolled-${i}.csv`), enrolled);
-
     let iterationEnd = new Date().getTime();
     console.log(`${portion} records, ${(iterationEnd - iterationStart) / 1000} seconds 👍!`);
   }
@@ -33,8 +30,4 @@ const saveToCSV = (num) => {
 };
 
 // npm run csv
-// saveToCSV(10);
-
-// npm run csv-plus
 saveToCSV(10000000);
-

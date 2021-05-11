@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-let Title = require('../../db/title.model');
+let Title = require('../../db/mongo/title.model');
 const mongoose = require('mongoose');
 
 const dataGeneratorFunction = require('../example.data');

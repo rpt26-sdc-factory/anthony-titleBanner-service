@@ -1,4 +1,4 @@
-const Title = require('../../db/title.model');
+const Title = require('../../db/mongo/title.model');
 const { exampleDataGenerator } = require('../../server/example.data');
 const mongoose = require('mongoose');
 

@@ -1,7 +1,17 @@
 const express = require('express');
 const router = express.Router();
+
+// mongo controllers
 const { postTitle, getTitle, putTitle, deleteTitle } = require('../controllers/mongo/title.Controller');
 const { postEnrolled, getEnrolled, putEnrolled, deleteEnrolled } = require('../controllers/mongo/enrolled.Controller');
+
+// postgres controllers
+// const { postTitle, getTitle, putTitle, deleteTitle } = require('../controllers/postgres/title.Controller');
+// const { postEnrolled, getEnrolled, putEnrolled, deleteEnrolled } = require('../controllers/postgres/enrolled.Controller');
+
+// cassandra controllers
+// const { postTitle, getTitle, putTitle, deleteTitle } = require('../controllers/cass/title.Controller');
+// const { postEnrolled, getEnrolled, putEnrolled, deleteEnrolled } = require('../controllers/cass/enrolled.Controller');
 
 // Titles
 router.post('/postTitle', postTitle);
