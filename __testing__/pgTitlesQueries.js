@@ -1,10 +1,10 @@
 const axios = require('axios');
-const { titlesPool } = require('../db/postgres/postgresDB');
+const { pool } = require('../db/postgres/postgresDB');
 
 // TITLES
 (async () => {
   // Titles DB Connection
-  await titlesPool.connect((err, client, release) => {
+  await pool.connect((err, client, release) => {
     if (err) {
       return console.error('Error acquiring client', err.stack);
     }
@@ -24,8 +24,9 @@ const { titlesPool } = require('../db/postgres/postgresDB');
   let result;
   console.time('POST Test Result');
   let title = 'FAKE EDUCATION';
-  result = await titlesPool.query(
-    'INSERT INTO titles (title) VALUES ($1) RETURNING *', [title]
+  let enrolled = 5000;
+  result = await pool.query(
+    'INSERT INTO titles (title, enrolled) VALUES ($1, $2) RETURNING *', [title, enrolled]
   );
   console.log(result.rows[0])
   console.timeEnd('POST Test Result');
@@ -33,7 +34,7 @@ const { titlesPool } = require('../db/postgres/postgresDB');
 
   // GET
   console.time('GET Test Result');
-  result = await titlesPool.query('SELECT * FROM titles WHERE title = $1', [title]);
+  result = await pool.query('SELECT * FROM titles WHERE title = $1', [title]);
   console.log(result.rows[0])
   console.timeEnd('GET Test Result');
   console.log('\n');
@@ -41,17 +42,17 @@ const { titlesPool } = require('../db/postgres/postgresDB');
   // PUT
   console.time('PUT Test Result');
   let newTitle = 'REAL EDUCATION'
-  result = await titlesPool.query('UPDATE titles SET title = $1 WHERE title = $2 RETURNING *', [newTitle, title])
+  result = await pool.query('UPDATE titles SET title = $1 WHERE title = $2 RETURNING *', [newTitle, title])
   console.log(result.rows[0])
   console.timeEnd('PUT Test Result');
   console.log('\n');
 
   // DELETE
   console.time('DELETE Test Result');
-  result = await titlesPool.query('DELETE FROM titles WHERE title = $1 RETURNING *', [title]);
+  result = await pool.query('DELETE FROM titles WHERE title = $1 RETURNING *', [title]);
   console.timeEnd('DELETE Test Result');
   console.log('\n');
 
-  titlesPool.end();
+  pool.end();
 })();
 
