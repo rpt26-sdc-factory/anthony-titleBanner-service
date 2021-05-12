@@ -4,8 +4,8 @@ const path = require('path');
 
 
 const saveToCSV = (num) => {
-  fs.writeFileSync('seed/__data__/titles.csv', '"id","title"\n');
-  fs.writeFileSync('seed/__data__/enrolled.csv', '"id","enrolled"\n');
+  fs.writeFileSync('seed/__data__/titles.csv', '"title"\n');
+  fs.writeFileSync('seed/__data__/enrolled.csv', "enrolled"\n');
 
   let start = new Date().getTime();
   let titles = '';
