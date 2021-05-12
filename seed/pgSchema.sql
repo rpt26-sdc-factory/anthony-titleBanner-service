@@ -12,8 +12,10 @@ CREATE TABLE titles(
   title VARCHAR(255)
 );
 
+-- CREATE INDEX title_idx ON titles (title);
+
 -- COPY CSV to POSTGRES DATABASE
-\copy titles FROM 'seed/__data__/titles.csv' WITH (FORMAT csv, HEADER);
+\copy titles (title) FROM 'seed/__data__/titles.csv' WITH (FORMAT csv, HEADER);
 
 -- ENROLLED NUMBERS
 DROP DATABASE IF EXISTS enrolled_database;
@@ -23,11 +25,13 @@ CREATE DATABASE enrolled_database;
 
 CREATE TABLE enrolled(
   id SERIAL PRIMARY KEY,
-  enrolled VARCHAR(255)
+  enrolled INT
 );
 
+-- CREATE INDEX enrolled_idx ON enrolled (enrolled);
+
 -- COPY CSV to POSTGRES DATABASE
-\copy enrolled FROM 'seed/__data__/enrolled.csv' WITH (FORMAT csv, HEADER);
+\copy enrolled (enrolled) FROM 'seed/__data__/enrolled.csv' WITH (FORMAT csv, HEADER);
 
 -- connect back to postgres database
 \c postgres
