@@ -1,9 +1,9 @@
 import 'regenerator-runtime/runtime';
 const mongoose = require('mongoose');
-const app = require('../server/index');
+const app = require('../../server/index');
 const supertest = require('supertest');
 const request = supertest(app);
-const Title = require('../db/mongo/title.model');
+const Title = require('../../db/mongo/title.model');
 
 
 // connect to db prior to tests

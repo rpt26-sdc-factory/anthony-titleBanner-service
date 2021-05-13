@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { pool } = require('../db/postgres/postgresDB');
+const { pool } = require('../../db/postgres/postgresDB');
 
 // TITLES
 (async () => {
