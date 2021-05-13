@@ -10,7 +10,7 @@ CREATE TABLE titles(
   enrolled varint
   );
 
-COPY titles (id, title, enrolled) FROM 'seed/__data__/data.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+COPY titles (id, title, enrolled) FROM 'seed/__data__/cassData.csv' WITH DELIMITER=',' AND HEADER=TRUE;
 
 
 /*

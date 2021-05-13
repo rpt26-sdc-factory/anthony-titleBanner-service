@@ -6,7 +6,7 @@ const router = express.Router();
 // const { postEnrolled, getEnrolled, putEnrolled, deleteEnrolled } = require('../controllers/mongo/enrolled.Controller');
 
 // postgres controllers
-const { getTitle, postTitle, putTitle, deleteTitle } = require('../controllers/postgres/title.Controller');
+const { getTitle, postTitle, putTitle, deleteTitle } = require('../controllers/postgres/pgController');
 
 // cassandra controllers
 // const { postTitle, getTitle, putTitle, deleteTitle } = require('../controllers/cass/title.Controller');
@@ -14,9 +14,15 @@ const { getTitle, postTitle, putTitle, deleteTitle } = require('../controllers/p
 
 // Titles
 router.post('/postTitle', postTitle);
-router.get('/getTitle/:title', getTitle);
-router.put('/updateTitle/:title', putTitle);
-router.delete('/deleteTitle/:title', deleteTitle);
+router.get('/getTitle/:id', getTitle);
+router.put('/updateTitle/:id', putTitle);
+router.delete('/deleteTitle/:id', deleteTitle);
+
+// Titles
+// router.post('/postTitle', postTitle);
+// router.get('/getTitle/:title', getTitle);
+// router.put('/updateTitle/:title', putTitle);
+// router.delete('/deleteTitle/:title', deleteTitle);
 
 // Enrolled
 // router.post('/postEnrolled', postEnrolled);

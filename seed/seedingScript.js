@@ -3,8 +3,9 @@ const fs = require('fs');
 const path = require('path');
 
 
-const saveToCSV = (num) => {
-  fs.writeFileSync('seed/__data__/data.csv', '"title", "enrolled"\n');
+const SaveToCSV = (num) => {
+  // fs.writeFileSync('seed/__data__/pgata.csv', '"title", "enrolled"\n');
+  fs.writeFileSync('seed/__data__/cassData.csv', '"id","title", "enrolled"\n');
 
   let start = new Date().getTime();
 
@@ -14,7 +15,8 @@ const saveToCSV = (num) => {
 
     let dataCSV = generateData(portion, i);
 
-    fs.appendFileSync('seed/__data__/data.csv', dataCSV);
+    // fs.appendFileSync('seed/__data__/pgData.csv', dataCSV);
+    fs.appendFileSync('seed/__data__/cassData.csv', dataCSV);
 
     let iterationEnd = new Date().getTime();
     console.log(`${portion} records, ${(iterationEnd - iterationStart) / 1000} seconds 👍!`);
@@ -24,27 +26,6 @@ const saveToCSV = (num) => {
   console.log(`\n${num} records, ${(end - start) / 1000} seconds 👍!`);
 };
 
-// const saveToCSV = (num) => {
-//   fs.writeFileSync('seed/__data__/data.csv', '"id","title", "enrolled"\n');
-
-//   let start = new Date().getTime();
-
-//   for (let i = 1; i <= 2; i++) {
-//     let iterationStart = new Date().getTime();
-//     let portion = num / 2;
-
-//     let dataCSV = generateData(portion, i);
-
-//     fs.appendFileSync('seed/__data__/data.csv', dataCSV);
-
-//     let iterationEnd = new Date().getTime();
-//     console.log(`${portion} records, ${(iterationEnd - iterationStart) / 1000} seconds 👍!`);
-//   }
-
-//   let end = new Date().getTime();
-//   console.log(`\n${num} records, ${(end - start) / 1000} seconds 👍!`);
-// };
-
 
 // npm run csv
-saveToCSV(10000000);
+SaveToCSV(10000000);

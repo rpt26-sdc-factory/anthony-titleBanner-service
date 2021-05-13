@@ -26,9 +26,9 @@ exports.postTitle = async (req, res) => {
 exports.getTitle = async (req, res) => {
   try {
     let start = new Date().getTime();
-    const { title } = req.params;
+    const { id } = req.params;
 
-    const result = await pool.query('SELECT * FROM titles WHERE title = $1', [title]);
+    const result = await pool.query('SELECT * FROM titles WHERE id = $1', [id]);
 
     if (!result.rows[0]) {
       console.log(`${title} is not in Database!`);
@@ -50,14 +50,14 @@ exports.getTitle = async (req, res) => {
 exports.putTitle = async (req, res) => {
   try {
     let start = new Date().getTime();
-    const { title: originalTitle } = req.params;
-    const { title: changedTitle } = req.body;
+    const { id } = req.params;
+    const { title } = req.body;
 
-    const updateTitle = await pool.query('UPDATE titles SET title = $1 WHERE title = $2', [changedTitle, originalTitle])
+    const updateTitle = await pool.query('UPDATE titles SET title = $1 WHERE id = $2', [title, id])
 
     let end = new Date().getTime();
     console.log(`PUT, ${end - start} milliseconds!`)
-    res.json({ message: `${originalTitle} was CHANGED to ${changedTitle} in the Database!` });
+    res.json({ message: `ID ${id} was CHANGED to ${title} in the Database!` });
 
   } catch (err) {
     console.error(err);
@@ -69,13 +69,13 @@ exports.putTitle = async (req, res) => {
 exports.deleteTitle = async (req, res) => {
   try {
     let start = new Date().getTime();
-    const { title } = req.params;
+    const { id } = req.params;
 
-    const deleteTitle = await pool.query('DELETE FROM titles WHERE title = $1', [title]);
+    const deleteTitle = await pool.query('DELETE FROM titles WHERE id = $1', [id]);
 
     let end = new Date().getTime();
     console.log(`DELETE, ${end - start} milliseconds!`)
-    res.json({ message: `${title} was DELETED in the Database!` });
+    res.json({ message: `ID ${id} was DELETED in the Database!` });
 
   } catch (err) {
     console.error(err)
