@@ -23,3 +23,13 @@
 //     });
 //   })
 //   .catch(err => console.log('Error while getting total Enrolled', err));
+
+// generated from grant reviews
+// axios.get(`http://3.139.47.159/api/totalReviewScore/${id}`)
+//   .then(response => {
+//     this.setState({
+//       totalReviews: response.data.reviewCount,
+//       totalStars: response.data.totalStarScore
+//     });
+//   })
+//   .catch(err => console.log('Could not get reviews', err));

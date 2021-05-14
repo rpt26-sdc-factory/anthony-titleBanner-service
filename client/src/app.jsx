@@ -26,7 +26,7 @@ class Title extends Component {
       img: '',
       month: '',
       date: 0,
-      totalReviews: 0,
+      totalReviews: 20,
       totalStars: 0,
       color: '',
     };
@@ -52,6 +52,8 @@ class Title extends Component {
           month: months[Math.floor(Math.random() * months.length)],
           date: Math.floor(Math.random() * 30),
           color: colors[Math.floor(Math.random() * colors.length)],
+          totalReviews: res.data.reviewcounts,
+          totalStars: res.data.stars,
         });
       })
       .catch(err => console.error('Cannot get title', err));
@@ -82,16 +84,6 @@ class Title extends Component {
         });
       })
       .catch(err => console.log('Could not get images', err));
-
-    // generated from grant reviews
-    axios.get(`http://3.139.47.159/api/totalReviewScore/${id}`)
-      .then(response => {
-        this.setState({
-          totalReviews: response.data.reviewCount,
-          totalStars: response.data.totalStarScore
-        });
-      })
-      .catch(err => console.log('Could not get reviews', err));
   }
 
 
@@ -154,8 +146,6 @@ class Title extends Component {
 
 
   render() {
-    console.log(this.state.totalReviews)
-    console.log(this.state.totalStars)
     return (
       <div>
         <div className="title-service" style={{ backgroundImage: `linear-gradient(${this.state.color})` }}>
