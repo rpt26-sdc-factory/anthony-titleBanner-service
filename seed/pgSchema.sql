@@ -14,10 +14,10 @@ CREATE TABLE titles(
   enrolled INT
 );
 
--- CREATE INDEX title_idx ON titles (title);
-
 -- COPY CSV to POSTGRES DATABASE
 \copy titles (title, enrolled) FROM 'seed/__data__/data.csv' WITH (FORMAT csv, HEADER);
+
+-- CREATE INDEX title_idx ON titles (title);
 
 -- connect back to postgres database
 \c postgres
@@ -26,5 +26,6 @@ CREATE TABLE titles(
 SELECT EXTRACT(MILLISECONDS FROM now());
 
 
--- login command: psql -U postgres
+-- login command: psql
+-- kill all postgres connections: sudo pkill -u postgres
 -- create databases & tables command: \i seed/pgSchema.sql

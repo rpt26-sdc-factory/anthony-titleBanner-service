@@ -1,4 +1,3 @@
-const axios = require('axios');
 const { pool } = require('../../db/postgres/postgresDB');
 
 
