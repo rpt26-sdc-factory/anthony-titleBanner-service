@@ -1,0 +1,3 @@
+    "seed-titles": "node seed/titleSeedingScript.js",
+    "seed-enrolled": "node seed/enrolledSeedingScript.js",
+    "seed-mongo": "npm run seed-titles && npm run seed-enrolled",

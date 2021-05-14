@@ -7,10 +7,12 @@ USE sdc_database;
 CREATE TABLE titles(
   id int PRIMARY KEY,
   title text,
-  enrolled varint
+  enrolled varint,
+  reviewCounts int,
+  stars varint,
   );
 
-COPY titles (id, title, enrolled) FROM 'seed/__data__/cassData.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+COPY titles (title, enrolled, reviewCounts, stars) FROM 'seed/__data__/cassData.csv' WITH DELIMITER=',' AND HEADER=TRUE;
 
 
 /*

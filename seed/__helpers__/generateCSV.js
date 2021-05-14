@@ -1,4 +1,5 @@
 const { exampleDataGenerator, exampleEnrolledGenerator } = require('./example.data');
+const { getStars } = require('./getStars');
 
 
 const generateData = (num, iteration) => {
@@ -16,8 +17,10 @@ const generateData = (num, iteration) => {
   for (let i = 0; i < len; i++) {
     count > 10 ? count = 1 : count += 1;
     let title = titles[i].match(/[A-Za-z\s]/gi).join('') + '-' + count.toString();
-    // content += `${title},${enrolled[i]}\n`;
-    content += `${titlesID[i]},${title},${enrolled[i]}\n`;
+    let star = getStars();
+    let reviewsCount = Math.floor(Math.random() * (30 - 1) + 1);
+    content += `${title},${enrolled[i]},${reviewsCount},${star}\n`;
+    // content += `${titlesID[i]},${title},${enrolled[i]},${star}\n`;
 
   }
   return content;
