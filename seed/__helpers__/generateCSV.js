@@ -20,7 +20,7 @@ const generateData = (num, iteration) => {
     let star = getStars();
     let reviewsCount = Math.floor(Math.random() * (30 - 1) + 1);
     content += `${title},${enrolled[i]},${reviewsCount},${star}\n`;
-    // content += `${titlesID[i]},${title},${enrolled[i]},${star}\n`;
+    // content += `${titlesID[i]},${title},${enrolled[i]},${reviewsCount},${star}\n`;
 
   }
   return content;

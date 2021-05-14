@@ -4,15 +4,15 @@ CREATE KEYSPACE sdc_database WITH replication = {'class':'SimpleStrategy', 'repl
 
 USE sdc_database;
 
-CREATE TABLE titles(
+CREATE TABLE titles (
   id int PRIMARY KEY,
   title text,
   enrolled varint,
-  reviewCounts int,
-  stars varint,
+  reviewCounts varint,
+  stars text
   );
 
-COPY titles (title, enrolled, reviewCounts, stars) FROM 'seed/__data__/cassData.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+COPY titles (id, title, enrolled, reviewCounts, stars) FROM 'seed/__data__/cassData.csv' WITH DELIMITER=',' AND HEADER=TRUE;
 
 
 /*

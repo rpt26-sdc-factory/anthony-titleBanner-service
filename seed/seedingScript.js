@@ -5,7 +5,7 @@ const path = require('path');
 
 const SaveToCSV = (num) => {
   fs.writeFileSync('seed/__data__/pgData.csv', '"title","enrolled","reviewCounts","stars"\n');
-  // fs.writeFileSync('seed/__data__/cassData.csv', '"id","title","enrolled"\n');
+  // fs.writeFileSync('seed/__data__/cassData.csv', '"id","title","enrolled","reviewCounts","stars"\n');
 
   let start = new Date().getTime();
 

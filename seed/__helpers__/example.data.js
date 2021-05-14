@@ -31,23 +31,6 @@ let exampleEnrolledGenerator = (index) => {
   return totalEnrolled;
 };
 
-// let exampleEnrolledGenerator = () => {
-//   var diff = titleNameCounter - enrolledCounter;
-
-//   var totalEnrolled = [{
-//     id: [],
-//     enrolled: []
-//   }];
-//   while (diff !== 0) {
-//     enrolledCounter++;
-//     totalEnrolled[0].id.push(enrolledCounter);
-//     totalEnrolled[0].enrolled.push(faker.random.number());
-//     diff--;
-//   }
-//   return totalEnrolled;
-// };
-
-
 
 module.exports = {
   exampleDataGenerator,

@@ -8,7 +8,7 @@ CREATE DATABASE sdc_database;
 
 \c sdc_database
 
-CREATE TABLE IF NOT EXISTS titles (
+CREATE TABLE titles (
   id SERIAL PRIMARY KEY,
   title VARCHAR(255),
   enrolled INT,
