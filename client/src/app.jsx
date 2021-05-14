@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 import $ from 'jquery';
 import axios from 'axios';
 import './style.css';
-import colors from './icons/backgroundImages';
+import colors from './__helpers__/backgroundImages';
 import Titles from './components/titles.jsx';
 import Enrolled from './components/enrolled.jsx';
 import Stars from './components/totalStars.jsx';
