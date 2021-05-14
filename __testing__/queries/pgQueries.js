@@ -2,7 +2,7 @@ const { pool } = require('../../db/postgres/postgresDB');
 
 
 // POSTGRES QUERIES TEST
-const pgQueriesTest = async () => {
+(async () => {
   // Connection
   await pool.connect((err, client, release) => {
     if (err) {
@@ -57,6 +57,4 @@ const pgQueriesTest = async () => {
   console.log('\n');
 
   pool.end();
-};
-
-pgQueriesTest();
+})();

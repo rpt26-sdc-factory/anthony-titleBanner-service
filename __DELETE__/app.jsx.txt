@@ -33,3 +33,46 @@
 //     });
 //   })
 //   .catch(err => console.log('Could not get reviews', err));
+
+  // this.onChange = this.onChange.bind(this);
+
+  // componentWillUnmount() {
+  //   // fix Warning: Can't perform a React state update on an unmounted component
+  //   this.setState = (state, callback) => {
+  //     return;
+  //   };
+  // }
+
+  // onChange(e) {
+  //   this.setState({
+  //     num: Number(e.target.value)
+  //   });
+  // }
+
+  //  this.add = this.add.bind(this);
+
+
+  //TODO: Can remove as used only for seeding
+  add() {
+    $.ajax({
+      type: 'POST',
+      url: 'http://3.140.219.139/api/addTitle',
+      data: { total: this.state.num },
+      success: () => console.log('successfully made a post')
+    });
+  }
+
+      // this.stars = this.stars.bind(this);
+
+      // const mapper = (title) => {
+//   return title.map(currentTitle => <div>{currentTitle.title}</div>);
+// };
+//Render the received Data from API in a basic Div
+
+import ReactDom from 'react-dom';
+
+// const mapper = (enrolled) => {
+//   console.log(enrolled);
+//   return enrolled.map(currentEnrolled => <div>{currentEnrolled.enrolled}</div>);
+// };
+//Render the received Data from API in a basic Div

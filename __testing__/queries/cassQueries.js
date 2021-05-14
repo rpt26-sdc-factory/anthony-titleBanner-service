@@ -2,7 +2,7 @@ const cassandra = require('cassandra-driver');
 
 
 // CASS QUERIES TEST
-const cassQueriesTest = async () => {
+(async () => {
   // Connection
   const client = new cassandra.Client({
     contactPoints: ['127.0.0.1'],
@@ -62,6 +62,5 @@ const cassQueriesTest = async () => {
   setTimeout(() => {
     client.shutdown();
   }, 2000);
-};
+})();
 
-cassQueriesTest();
