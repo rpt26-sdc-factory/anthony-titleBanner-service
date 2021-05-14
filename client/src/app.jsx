@@ -1,4 +1,4 @@
-import React, { lazy } from 'react';
+import React, { lazy, Component } from 'react';
 import ReactDom from 'react-dom';
 import $ from 'jquery';
 import axios from 'axios';
@@ -12,7 +12,7 @@ import Stars from './components/totalStars.jsx';
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 
 
-class Title extends React.Component {
+class Title extends Component {
   constructor(props) {
     super(props);
     this.state = {
