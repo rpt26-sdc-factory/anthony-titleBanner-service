@@ -8,7 +8,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "generator-test": "node generator/generator",
+    "generator-test": "node seed/generator/generator",
     "seed-titles": "node seed/titleSeedingScript.js",
     "seed-enrolled": "node seed/enrolledSeedingScript.js",
     "seed-mongo": "npm run seed-titles && npm run seed-enrolled",

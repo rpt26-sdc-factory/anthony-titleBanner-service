@@ -28,4 +28,4 @@ SELECT EXTRACT(MILLISECONDS FROM now());
 
 -- login command: psql
 -- kill all postgres connections: sudo pkill -u postgres
--- create databases & tables command: \i seed/pgSchema.sql
+-- create databases & tables command: \i seed/schemas/pgSchema.sql

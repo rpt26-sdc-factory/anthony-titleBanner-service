@@ -40,19 +40,19 @@ router.route('/getTitle/:id').get((req, res) => {
 });
 
 
-//seeding route
-router.route('/addTitle').post((req, res) => {
-  var titleName = dataGeneratorFunction.exampleDataGenerator(req.body.total);
-  saveTile(titleName, (data, err) => {
-    if (err) {
-      res.status(400).json(err);
-    } else {
-      console.log('Titles added successfully', data.title);
-      // mongoose.connection.close();
-    }
-  });
-  res.status(200).json('Added title names successfully');
-});
+// //seeding route
+// router.route('/addTitle').post((req, res) => {
+//   var titleName = dataGeneratorFunction.exampleDataGenerator(req.body.total);
+//   saveTile(titleName, (data, err) => {
+//     if (err) {
+//       res.status(400).json(err);
+//     } else {
+//       console.log('Titles added successfully', data.title);
+//       // mongoose.connection.close();
+//     }
+//   });
+//   res.status(200).json('Added title names successfully');
+// });
 
 
 

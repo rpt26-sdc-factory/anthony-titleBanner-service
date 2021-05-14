@@ -1,4 +1,4 @@
-const { exampleDataGenerator, exampleEnrolledGenerator } = require('../../server/example.data');
+const { exampleDataGenerator, exampleEnrolledGenerator } = require('./example.data');
 
 
 const generateData = (num, iteration) => {

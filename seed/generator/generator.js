@@ -1,4 +1,4 @@
-const { exampleDataGenerator, exampleEnrolledGenerator } = require('../server/example.data');
+const { exampleDataGenerator, exampleEnrolledGenerator } = require('../__helpers__/example.data');
 
 let start = new Date().getTime();
 

@@ -19,5 +19,5 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_201`
 cassandra -f
 cqlsh
 
-SOURCE 'seed/cassSchema.cql'
+SOURCE 'seed/schemas/cassSchema.cql'
 */
