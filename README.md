@@ -16,6 +16,7 @@
 
 ## Usage
 
+```
 Install Dependencies:
 - npm install
 
@@ -30,7 +31,7 @@ Load Data into Postgres:
 
 Start UI:
 - npm run react-dev
-
+```
 
 ## Requirements
 
