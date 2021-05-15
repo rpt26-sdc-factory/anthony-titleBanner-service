@@ -21,9 +21,11 @@ const cassandra = require('cassandra-driver');
   let enrolled = 5000;
   let id = 10000001;
   let title = 'FAKE EDUCATION';
+  let reviewCounts = 24;
+  let stars = '4.2';
   let result;
 
-  await client.execute('INSERT INTO titles (id, enrolled, title) VALUES (?, ?, ?)', [id, enrolled, title], { prepare: true }, (err, result) => {
+  await client.execute('INSERT INTO titles (id, enrolled, title, reviewcounts, stars) VALUES (?, ?, ?, ?, ?)', [id, enrolled, title, reviewCounts, stars], { prepare: true }, (err, result) => {
     if (err) {
       console.error(err);
     }
