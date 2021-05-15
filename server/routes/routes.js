@@ -6,7 +6,7 @@ const router = express.Router();
 // const { postEnrolled, getEnrolled, putEnrolled, deleteEnrolled } = require('../controllers/mongo/enrolled.Controller');
 
 // postgres controllers
-const { getTitle, postTitle, putTitle, deleteTitle } = require('../controllers/postgres/pgController');
+const { getTitle, postTitle, putTitle, deleteTitle } = require('../controllers/postgres/controllers');
 
 // cassandra controllers
 // const { postTitle, getTitle, putTitle, deleteTitle } = require('../controllers/cass/title.Controller');

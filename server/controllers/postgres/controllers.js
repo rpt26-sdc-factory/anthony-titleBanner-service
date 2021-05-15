@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const { pool } = require('../../../db/postgres/postgresDB');
+const { pool } = require('../../../db/postgres/db');
 
 
 // POST

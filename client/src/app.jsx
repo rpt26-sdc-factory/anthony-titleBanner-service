@@ -1,6 +1,5 @@
 import React, { lazy, Component } from 'react';
 import ReactDom from 'react-dom';
-import $ from 'jquery';
 import axios from 'axios';
 import './style.css';
 import colors from './__helpers__/backgroundImages';
@@ -34,13 +33,10 @@ class Title extends Component {
 
   // API Get request
   componentDidMount() {
-    if (document) {
-      var uri = window.location.href.split('/');
-      var id = uri[uri.length - 1] === '' ? 1 : uri[uri.length - 1];
-    }
+    let id = window.location.pathname;
 
     // GET title, enrolled num, months, date, color, reviews, & stars
-    axios.get(`/getTitle${window.location.pathname}`)
+    axios.get(`/getTitle${id}`)
       .then(res => {
         console.log(res.data);
         this.setState({
@@ -56,7 +52,7 @@ class Title extends Component {
       .catch(err => console.error('Cannot get title', err));
 
     // generated from jay instructor
-    axios.get(`http://54.176.19.199:3003/api/instructors/${id}`)
+    axios.get(`http://54.176.19.199:3003/api/instructors${id}`)
       .then(response => {
         this.setState({
           instructor: `${response.data[0].firstName} ${response.data[0].lastName}`
@@ -65,7 +61,7 @@ class Title extends Component {
       .catch(err => console.log('Cannot get instructors', err));
 
     // generated from jay instructor
-    axios.get(`http://54.176.19.199:3003/api/offeredBy/${id}`)
+    axios.get(`http://54.176.19.199:3003/api/offeredBy${id}`)
       .then(response => {
         this.setState({
           offeredBy: response.data[0].offeredByName
@@ -74,7 +70,7 @@ class Title extends Component {
       .catch(err => console.log('Cannot get offered by', err));
 
     // generated from jay images
-    axios.get(`http://54.176.19.199:3006/api/image/${id}/primaryInstructor `)
+    axios.get(`http://54.176.19.199:3006/api/image${id}/primaryInstructor `)
       .then(response => {
         this.setState({
           img: response.data.primaryInstructor
