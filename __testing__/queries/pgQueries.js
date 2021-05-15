@@ -1,10 +1,11 @@
 const axios = require('axios');
-const { enrolledPool } = require('../db/postgres/postgresDB');
+const { pool } = require('../../db/postgres/postgresDB');
 
-// ENROLLED
-(async () => {
-  // Enrolled DB Connection
-  await enrolledPool.connect((err, client, release) => {
+
+// POSTGRES QUERIES TEST
+const pgQueriesTest = async () => {
+  // Connection
+  await pool.connect((err, client, release) => {
     if (err) {
       return console.error('Error acquiring client', err.stack);
     }
@@ -13,20 +14,22 @@ const { enrolledPool } = require('../db/postgres/postgresDB');
       if (err) {
         return console.error('Error executing query', err.stack);
       }
-      console.log('POSTGRES DB enrolled connected:', result.rows);
+      console.log('POSTGRES DB titles connected:', result.rows);
       console.log('\n');
     });
   });
 
-  console.log('POSTGRES ENROLLED Queries Test!\n');
+  // TESTS!!!!!!
+  console.log('POSTGRES Queries Test!\n');
 
   // POST
   let result;
   let id;
   console.time('POST Test Result');
-  let enrolled = 5001;
-  result = await enrolledPool.query(
-    'INSERT INTO enrolled (enrolled) VALUES ($1) RETURNING *', [enrolled]
+  let title = 'FAKE EDUCATION';
+  let enrolled = 5000;
+  result = await pool.query(
+    'INSERT INTO titles (title, enrolled) VALUES ($1, $2) RETURNING *', [title, enrolled]
   );
   console.log(result.rows[0])
   console.timeEnd('POST Test Result');
@@ -35,25 +38,26 @@ const { enrolledPool } = require('../db/postgres/postgresDB');
   // GET
   console.time('GET Test Result');
   id = result.rows[0].id;
-  result = await enrolledPool.query('SELECT * FROM enrolled WHERE id = $1', [id]);
+  result = await pool.query('SELECT * FROM titles WHERE id = $1', [id]);
   console.log(result.rows[0])
   console.timeEnd('GET Test Result');
   console.log('\n');
 
   // PUT
   console.time('PUT Test Result');
-  enrolled = 5002;
-  result = await enrolledPool.query('UPDATE enrolled SET enrolled = $1 WHERE id = $2 RETURNING *', [enrolled, id])
+  let newTitle = 'REAL EDUCATION'
+  result = await pool.query('UPDATE titles SET title = $1 WHERE id = $2 RETURNING *', [newTitle, id])
   console.log(result.rows[0])
   console.timeEnd('PUT Test Result');
   console.log('\n');
 
   // DELETE
   console.time('DELETE Test Result');
-  id = result.rows[0].id;
-  result = await enrolledPool.query('DELETE FROM enrolled WHERE id = $1 RETURNING *', [id]);
+  result = await pool.query('DELETE FROM titles WHERE id = $1 RETURNING *', [id]);
   console.timeEnd('DELETE Test Result');
   console.log('\n');
 
-  enrolledPool.end();
-})();
+  pool.end();
+};
+
+pgQueriesTest();
