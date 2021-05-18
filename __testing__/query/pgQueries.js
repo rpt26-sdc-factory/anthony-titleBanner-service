@@ -1,4 +1,4 @@
-const { pool } = require('../db/postgres/db');
+const { pool } = require('../../db/db');
 
 
 // POSTGRES QUERIES TEST

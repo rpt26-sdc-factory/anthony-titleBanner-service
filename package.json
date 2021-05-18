@@ -18,8 +18,8 @@
     "test": "node_modules/jest/bin/jest.js",
     "test-debug": "jest --detectOpenHandles",
     "test-api": "jest __testing__/apis",
-    "test-pgQuery": "node __testing__/pgQueries",
-    "test-cassQuery": "node __testing__/cassQueries",
+    "test:pgQuery": "node __testing__/query/pgQueries",
+    "test:cassQuery": "node __testing__/query/cassQueries",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "jest": {
