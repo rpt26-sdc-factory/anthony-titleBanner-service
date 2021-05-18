@@ -16,7 +16,8 @@
     "test": "node_modules/jest/bin/jest.js",
     "test-debug": "jest --detectOpenHandles",
     "test-api": "jest __testing__/apis",
-    "test-queries": "node __testing__/pgQueries",
+    "test-pgQuery": "node __testing__/pgQueries",
+    "test-cassQuery": "node __testing__/cassQueries",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "jest": {
@@ -34,6 +35,7 @@
     "jquery": "^3.6.0",
     "mocha": "^8.3.2",
     "mongoose": "^5.11.18",
+    "newrelic": "^7.4.0",
     "pg": "^8.6.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
