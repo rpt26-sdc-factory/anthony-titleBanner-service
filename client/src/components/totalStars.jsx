@@ -1,12 +1,10 @@
 import React from 'react';
-import ReactDom from 'react-dom';
+import stars from '../__helpers__/stars'
 
 
-
-
-
-const Stars = ( {stars, rating} ) => (
-  <span className="title-overall-star" dangerouslySetInnerHTML={{__html: stars(rating)}}></span>
+const Stars = ({ rating }) => (
+  <span className="title-overall-star" dangerouslySetInnerHTML={{ __html: stars(rating) }}></span>
 );
+
 
 export default Stars;

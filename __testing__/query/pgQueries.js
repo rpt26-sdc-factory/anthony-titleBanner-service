@@ -1,9 +1,8 @@
-const axios = require('axios');
-const { pool } = require('../../db/postgres/postgresDB');
+const { pool } = require('../../db/db');
 
 
 // POSTGRES QUERIES TEST
-const pgQueriesTest = async () => {
+(async () => {
   // Connection
   await pool.connect((err, client, release) => {
     if (err) {
@@ -28,10 +27,12 @@ const pgQueriesTest = async () => {
   console.time('POST Test Result');
   let title = 'FAKE EDUCATION';
   let enrolled = 5000;
+  let reviewCounts = 24;
+  let stars = '4.2';
   result = await pool.query(
-    'INSERT INTO titles (title, enrolled) VALUES ($1, $2) RETURNING *', [title, enrolled]
+    'INSERT INTO titles (title, enrolled, reviewcounts, stars) VALUES ($1, $2, $3, $4) RETURNING *', [title, enrolled, reviewCounts, stars]
   );
-  console.log(result.rows[0])
+  console.log(result.rows[0]);
   console.timeEnd('POST Test Result');
   console.log('\n');
 
@@ -39,7 +40,7 @@ const pgQueriesTest = async () => {
   console.time('GET Test Result');
   id = result.rows[0].id;
   result = await pool.query('SELECT * FROM titles WHERE id = $1', [id]);
-  console.log(result.rows[0])
+  console.log(result.rows[0]);
   console.timeEnd('GET Test Result');
   console.log('\n');
 
@@ -47,7 +48,7 @@ const pgQueriesTest = async () => {
   console.time('PUT Test Result');
   let newTitle = 'REAL EDUCATION'
   result = await pool.query('UPDATE titles SET title = $1 WHERE id = $2 RETURNING *', [newTitle, id])
-  console.log(result.rows[0])
+  console.log(result.rows[0]);
   console.timeEnd('PUT Test Result');
   console.log('\n');
 
@@ -58,6 +59,4 @@ const pgQueriesTest = async () => {
   console.log('\n');
 
   pool.end();
-};
-
-pgQueriesTest();
+})();

@@ -2,7 +2,7 @@ const cassandra = require('cassandra-driver');
 
 
 // CASS QUERIES TEST
-const cassQueriesTest = async () => {
+(async () => {
   // Connection
   const client = new cassandra.Client({
     contactPoints: ['127.0.0.1'],
@@ -17,13 +17,14 @@ const cassQueriesTest = async () => {
 
   // POST
   console.time('POST Test Result');
-
+  let id = 10000002;
   let enrolled = 5000;
-  let id = 10000001;
+  let reviewCounts = 24;
+  let stars = '4.2';
   let title = 'FAKE EDUCATION';
   let result;
 
-  await client.execute('INSERT INTO titles (id, enrolled, title) VALUES (?, ?, ?)', [id, enrolled, title], { prepare: true }, (err, result) => {
+  await client.execute('INSERT INTO titles (id, enrolled, reviewcounts, stars, title) VALUES (?, ?, ?, ?, ?)', [id, enrolled, reviewCounts, stars, title], { prepare: true }, (err, result) => {
     if (err) {
       console.error(err);
     }
@@ -62,6 +63,5 @@ const cassQueriesTest = async () => {
   setTimeout(() => {
     client.shutdown();
   }, 2000);
-};
+})();
 
-cassQueriesTest();

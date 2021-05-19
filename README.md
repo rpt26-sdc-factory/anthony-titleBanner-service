@@ -11,11 +11,27 @@
 ## Table of Contents
 
 1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
+2. [Requirements](#requirements)
+3. [Development](#development)
 
 ## Usage
 
+```
+Install Dependencies:
+- npm install
+
+Start Server:
+- npm start
+
+Generate Data:
+- npm run csv
+
+Load Data into Postgres:
+- log into postgres, from postgres terminal \i seed/schemas/pgSchema.sql
+
+Start UI:
+- npm run react-dev
+```
 
 ## Requirements
 

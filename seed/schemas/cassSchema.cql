@@ -4,13 +4,15 @@ CREATE KEYSPACE sdc_database WITH replication = {'class':'SimpleStrategy', 'repl
 
 USE sdc_database;
 
-CREATE TABLE titles(
+CREATE TABLE titles (
   id int PRIMARY KEY,
   title text,
-  enrolled varint
+  enrolled varint,
+  reviewCounts varint,
+  stars text
   );
 
-COPY titles (id, title, enrolled) FROM 'seed/__data__/cassData.csv' WITH DELIMITER=',' AND HEADER=TRUE;
+COPY titles (id, title, enrolled, reviewCounts, stars) FROM 'seed/__data__/cassData.csv' WITH DELIMITER=',' AND HEADER=TRUE;
 
 
 /*
@@ -19,5 +21,5 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_201`
 cassandra -f
 cqlsh
 
-SOURCE 'seed/cassSchema.cql'
+SOURCE 'seed/schemas/cassSchema.cql'
 */

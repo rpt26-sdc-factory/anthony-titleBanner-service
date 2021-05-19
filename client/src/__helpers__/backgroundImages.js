@@ -17,4 +17,4 @@ const backGroundColor = [
   '90deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%',
 ];
 
-module.exports = backGroundColor;
+export default backGroundColor;

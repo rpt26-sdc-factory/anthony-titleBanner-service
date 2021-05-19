@@ -23,3 +23,5 @@ coverage
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 config
 __data__
+newrelic.js
+newrelic_agent.log
