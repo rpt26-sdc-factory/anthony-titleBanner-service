@@ -4,10 +4,10 @@ export let options = {
   scenarios: {
     constant_request_rate: {
       executor: 'constant-arrival-rate',
-      // rate: 1,
+      rate: 1,
       // rate: 10,
       // rate: 100,
-      rate: 1000,
+      // rate: 1000,
       timeUnit: '1s', // x iterations per second, i.e. 1000 RPS (rate)
       duration: '30s',
       preAllocatedVUs: 100, // how large the initial pool of VUs would be
@@ -23,7 +23,7 @@ export default function () {
   var payload = JSON.stringify({
     title: 'Blue Banana',
     enrolled: 100,
-    reviewcounts: '30',
+    reviewcounts: 30,
     stars: '4.5',
   });
 
