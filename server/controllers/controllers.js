@@ -6,9 +6,9 @@ const { pool } = require('../../db/db');
 // POST
 exports.postTitle = async (req, res) => {
   try {
-    const { title, enrolled, reviewcounts, stars } = req.body;
+    const { title, enrolled, reviewcounts, stars, offerredby } = req.body;
     const newTitle = await pool.query(
-      'INSERT INTO titles (title, enrolled, reviewcounts, stars) VALUES ($1, $2, $3, $4) RETURNING *', [title, enrolled, reviewcounts, stars]
+      'INSERT INTO titles (title, enrolled, reviewcounts, stars, offerredby) VALUES ($1, $2, $3, $4, $5) RETURNING *', [title, enrolled, reviewcounts, stars, offerredby]
     );
     res.json(newTitle.rows[0]);
 

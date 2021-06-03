@@ -8,9 +8,10 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "start": "nodemon ./server",
+    "start": "node ./server",
+    "server": "nodemon ./server",
     "build": "webpack",
-    "react-dev": "webpack --watch --hot",
+    "react-dev": "webpack --mode development --watch --hot",
     "csv": "node seed/seedingScript",
     "generator:test": "node seed/generator/generator",
     "k6:get": "k6 run __testing__/load/getScript.js",
