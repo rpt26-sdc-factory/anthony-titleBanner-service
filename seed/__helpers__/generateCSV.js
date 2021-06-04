@@ -11,6 +11,15 @@ const generateData = (num, iteration) => {
   let enrolled = generatedEnrolled[0].enrolled;
   let len = titles.length;
 
+  const offeredByNames = [
+    'DeepLearning.AI',
+    'Erasmus University Rotterdam',
+    'IBM',
+    'University of Illinois at Urbana-Champaign',
+    'University of Pennsylvania',
+    'University of Virginia',
+  ];
+
   let content = '';
   let count = 0;
 
@@ -19,9 +28,10 @@ const generateData = (num, iteration) => {
     let title = titles[i].match(/[A-Za-z\s]/gi).join('') + '-' + count.toString();
     let star = getStars();
     let reviewsCount = Math.floor(Math.random() * (30 - 1) + 1);
-    content += `${title},${enrolled[i]},${reviewsCount},${star}\n`;
-    // content += `${titlesID[i]},${title},${enrolled[i]},${reviewsCount},${star}\n`;
+    let idx = Math.floor(Math.random() * 6);
+    let offeredBy = offeredByNames[idx];
 
+    content += `${title},${enrolled[i]},${reviewsCount},${star},${offeredBy}\n`;
   }
   return content;
 };

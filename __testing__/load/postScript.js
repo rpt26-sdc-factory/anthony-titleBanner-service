@@ -23,7 +23,7 @@ export default function () {
   var payload = JSON.stringify({
     title: 'Blue Banana',
     enrolled: 100,
-    reviewcounts: '30',
+    reviewcounts: 30,
     stars: '4.5',
   });
 
