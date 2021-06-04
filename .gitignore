@@ -25,4 +25,3 @@ config
 __data__
 newrelic.js
 newrelic_agent.log
-package-lock.json
