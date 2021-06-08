@@ -25,3 +25,5 @@ config
 __data__
 newrelic.js
 newrelic_agent.log
+*.pem
+login.sh
