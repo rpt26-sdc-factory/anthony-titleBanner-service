@@ -17,7 +17,6 @@ CREATE TABLE titles (
   offeredBy VARCHAR(255)
 );
 
-
 -- COPY CSV to POSTGRES DATABASE
 \copy titles (title, enrolled, reviewCounts, stars, offeredBy) FROM 'seed/__data__/pgData.csv' WITH (FORMAT csv, HEADER);
 
