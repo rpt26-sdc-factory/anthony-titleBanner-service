@@ -12,19 +12,21 @@ const pool = new Pool({
   port: process.env.POSTGRES_PORT,
 });
 
-// Connection
-// pool.connect((err, client, release) => {
-//   if (err) {
-//     return console.error('Error acquiring client', err.stack);
-//   }
-//   client.query('SELECT NOW()', (err, result) => {
-//     release();
-//     if (err) {
-//       return console.error('Error executing query', err.stack);
-//     }
-//     console.log('POSTGRES connected:', result.rows);
-//     console.log('\n');
-//   });
-// });
 
 module.exports = { pool };
+
+
+// Connection
+pool.connect((err, client, release) => {
+  if (err) {
+    return console.error('Error acquiring client', err.stack);
+  }
+  client.query('SELECT NOW()', (err, result) => {
+    release();
+    if (err) {
+      return console.error('Error executing query', err.stack);
+    }
+    console.log('POSTGRES connected:', result.rows);
+    console.log('\n');
+  });
+});

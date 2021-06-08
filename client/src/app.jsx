@@ -47,6 +47,7 @@ class Title extends Component {
           color: colors[Math.floor(Math.random() * colors.length)],
           totalReviews: res.data.reviewcounts,
           totalStars: res.data.stars,
+          offeredBy: res.data.offeredby,
         });
       })
       .catch(err => console.error('Cannot get title', err));
@@ -59,15 +60,6 @@ class Title extends Component {
         });
       })
       .catch(err => console.log('Cannot get instructors', err));
-
-    // // generated from jay instructor
-    // axios.get(`http://54.176.19.199:3003/api/offeredBy${id}`)
-    //   .then(response => {
-    //     this.setState({
-    //       offeredBy: response.data[0].offeredByName
-    //     });
-    //   })
-    //   .catch(err => console.log('Cannot get offered by', err));
 
     // generated from jay images
     axios.get(`http://54.176.19.199:3006/api/image${id}/primaryInstructor `)
