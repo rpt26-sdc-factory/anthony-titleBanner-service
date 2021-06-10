@@ -7,9 +7,7 @@ import Titles from './components/titles.jsx';
 import Enrolled from './components/enrolled.jsx';
 import Stars from './components/totalStars.jsx';
 
-const months = [
-  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'
-];
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 
 
 class Title extends Component {
@@ -46,24 +44,33 @@ class Title extends Component {
     results.then(res => {
       res.forEach((res, i) => {
         if (res.status === "fulfilled") {
+          // titles, etc.
           if (i === 0) {
+            const { title, enrolled, reviewcounts, stars, offeredby } = res.value.data;
+
             this.setState({
-              titles: res.value.data.title,
-              totalEnrolled: res.value.data.enrolled,
+              titles: title,
+              totalEnrolled: enrolled,
               month: months[Math.floor(Math.random() * months.length)],
               date: Math.floor(Math.random() * 30),
               color: colors[Math.floor(Math.random() * colors.length)],
-              totalReviews: res.value.data.reviewcounts,
-              totalStars: res.value.data.stars,
-              offeredBy: res.value.data.offeredby,
+              totalReviews: reviewcounts,
+              totalStars: stars,
+              offeredBy: offeredby,
             });
+            // instructor name
           } else if (i === 1) {
+            const { firstname, lastname } = res.value.data[0];
+
             this.setState({
-              instructor: `${res.value.data[0].firstname} ${res.value.data[0].lastname}`,
+              instructor: `${firstname} ${lastname}`,
             });
+            // instructor image
           } else {
+            const { primaryInstructor } = res.value.data;
+
             this.setState({
-              img: res.value.data.primaryInstructor,
+              img: primaryInstructor,
             });
           }
         }
