@@ -33,42 +33,42 @@ class Title extends Component {
 
   // API Get request
   componentDidMount() {
-    let id = window.location.pathname;
+    const id = window.location.pathname;
 
-    // GET title, enrolled num, months, date, color, reviews, & stars
-    axios.get(`/getTitle${id}`)
-      .then(res => {
-        console.log(res.data);
-        this.setState({
-          titles: res.data.title,
-          totalEnrolled: res.data.enrolled,
-          month: months[Math.floor(Math.random() * months.length)],
-          date: Math.floor(Math.random() * 30),
-          color: colors[Math.floor(Math.random() * colors.length)],
-          totalReviews: res.data.reviewcounts,
-          totalStars: res.data.stars,
-          offeredBy: res.data.offeredby,
-        });
+    const urls = [
+      `/getTitle${id}`,
+      `http://18.118.36.172:3003/api/instructors${id}`
+      // `http://54.176.19.199:3006/api/image${id}/primaryInstructor`
+    ];
+
+    const results = Promise.allSettled(urls.map(url => axios.get(url)));
+
+    results.then(res => {
+      res.forEach((res, i) => {
+        if (res.status === "fulfilled") {
+          if (i === 0) {
+            this.setState({
+              titles: res.value.data.title,
+              totalEnrolled: res.value.data.enrolled,
+              month: months[Math.floor(Math.random() * months.length)],
+              date: Math.floor(Math.random() * 30),
+              color: colors[Math.floor(Math.random() * colors.length)],
+              totalReviews: res.value.data.reviewcounts,
+              totalStars: res.value.data.stars,
+              offeredBy: res.value.data.offeredby,
+            });
+          } else if (i === 1) {
+            this.setState({
+              instructor: `${res.value.data[0].firstname} ${res.value.data[0].lastname}`,
+            });
+          } else {
+            this.setState({
+              img: res.value.data.primaryInstructor,
+            });
+          }
+        }
       })
-      .catch(err => console.error('Cannot get title', err));
-
-    // // generated from jay instructor
-    axios.get(`http://18.118.36.172:3003/api/instructors${id}`)
-      .then(response => {
-        this.setState({
-          instructor: `${response.data[0].firstname} ${response.data[0].lastname}`
-        });
-      })
-      .catch(err => console.log('Cannot get instructors', err));
-
-    //   // generated from jay images
-    //   axios.get(`http://54.176.19.199:3006/api/image${id}/primaryInstructor `)
-    //     .then(response => {
-    //       this.setState({
-    //         img: response.data.primaryInstructor
-    //       });
-    //     })
-    //     .catch(err => console.log('Could not get images', err));
+    })
   }
 
   render() {
