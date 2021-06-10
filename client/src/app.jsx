@@ -52,23 +52,23 @@ class Title extends Component {
       })
       .catch(err => console.error('Cannot get title', err));
 
-    // generated from jay instructor
-    axios.get(`http://54.176.19.199:3003/api/instructors${id}`)
+    // // generated from jay instructor
+    axios.get(`http://18.118.36.172:3003/api/instructors${id}`)
       .then(response => {
         this.setState({
-          instructor: `${response.data[0].firstName} ${response.data[0].lastName}`
+          instructor: `${response.data[0].firstname} ${response.data[0].lastname}`
         });
       })
       .catch(err => console.log('Cannot get instructors', err));
 
-    // generated from jay images
-    axios.get(`http://54.176.19.199:3006/api/image${id}/primaryInstructor `)
-      .then(response => {
-        this.setState({
-          img: response.data.primaryInstructor
-        });
-      })
-      .catch(err => console.log('Could not get images', err));
+    //   // generated from jay images
+    //   axios.get(`http://54.176.19.199:3006/api/image${id}/primaryInstructor `)
+    //     .then(response => {
+    //       this.setState({
+    //         img: response.data.primaryInstructor
+    //       });
+    //     })
+    //     .catch(err => console.log('Could not get images', err));
   }
 
   render() {
