@@ -24,7 +24,7 @@
     "test:cassQuery": "node __testing__/query/cassQueries",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "docker:build": "docker build -t anthonysim/sdc-service .",
-    "docker:run": "docker run --restart=always -dp 3001:3001 anthonysim/sdc-service"
+    "docker:run": "docker run --restart=always --log-opt max-size=10m --log-opt max-file=5 -dp 3001:3001 anthonysim/sdc-service"
   },
   "jest": {
     "testEnvironment": "node"
