@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node ./server",
     "server": "nodemon ./server",
-    "build": "webpack",
+    "build": "webpack --mode production",
     "react:dev": "webpack --mode development --watch --hot",
     "dev": "concurrently \"npm run server\" \"npm run react:dev\"",
     "csv": "node seed/seedingScript",
@@ -25,7 +25,11 @@
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "docker:build": "docker build -t anthonysim/sdc-service .",
     "docker:run": "docker run --restart=always --log-opt max-size=10m --log-opt max-file=5 -dp 3001:3001 anthonysim/sdc-service",
-    "docker:destroy": "docker system prune"
+    "docker:destroy": "docker system prune",
+    "pm2:start": "pm2 start ./server/index.js --name sdc-titles-service",
+    "pm2:restart": "pm2 restart 0",
+    "pm2:list": "pm2 list",
+    "pm2:stop": "pm2 stop all"
   },
   "jest": {
     "testEnvironment": "node"
@@ -45,6 +49,7 @@
     "mongoose": "^5.11.18",
     "newrelic": "^7.4.0",
     "pg": "^8.6.0",
+    "pm2": "^5.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "regenerator-runtime": "^0.13.7"

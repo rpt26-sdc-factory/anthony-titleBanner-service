@@ -1,4 +1,4 @@
-import React, { lazy, Component } from 'react';
+import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 import axios from 'axios';
 import './style.css';
