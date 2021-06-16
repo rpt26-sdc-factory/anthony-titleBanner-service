@@ -1,4 +1,4 @@
-const { client } = require('../redis-client/client');
+const { redisClient } = require('../redis-client/client');
 
 
 // Cache middleware

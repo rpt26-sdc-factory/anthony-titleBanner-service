@@ -1,24 +1,10 @@
 const express = require('express');
 const app = express();
 const { pool } = require('../../db/db');
+const { redisClient } = require('../redis-client/client');
 
 
-// POST
-exports.postTitle = async (req, res) => {
-  try {
-    const { title, enrolled, reviewcounts, stars, offeredby } = req.body;
-    const newTitle = await pool.query(
-      'INSERT INTO titles (title, enrolled, reviewcounts, stars, offeredby) VALUES ($1, $2, $3, $4, $5) RETURNING *', [title, enrolled, reviewcounts, stars, offeredby]
-    );
-    res.json(newTitle.rows[0]);
-
-  } catch (err) {
-    console.error(err);
-    res.end();
-  }
-}
-
-// GET
+// =============== GET ===============
 exports.getTitle = async (req, res) => {
   try {
     const { id } = req.params;
@@ -38,7 +24,22 @@ exports.getTitle = async (req, res) => {
   }
 };
 
-// PUT
+// =============== POST ===============
+exports.postTitle = async (req, res) => {
+  try {
+    const { title, enrolled, reviewcounts, stars, offeredby } = req.body;
+    const newTitle = await pool.query(
+      'INSERT INTO titles (title, enrolled, reviewcounts, stars, offeredby) VALUES ($1, $2, $3, $4, $5) RETURNING *', [title, enrolled, reviewcounts, stars, offeredby]
+    );
+    res.json(newTitle.rows[0]);
+
+  } catch (err) {
+    console.error(err);
+    res.end();
+  }
+}
+
+// =============== PUT ===============
 exports.putTitle = async (req, res) => {
   try {
     const { id } = req.params;
@@ -52,7 +53,7 @@ exports.putTitle = async (req, res) => {
   }
 };
 
-// DELETE
+// =============== DELETE ===============
 exports.deleteTitle = async (req, res) => {
   try {
     const { id } = req.params;
