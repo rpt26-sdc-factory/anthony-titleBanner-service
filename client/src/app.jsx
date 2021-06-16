@@ -6,6 +6,7 @@ import colors from './__helpers__/backgroundImages';
 import Titles from './components/titles.jsx';
 import Enrolled from './components/enrolled.jsx';
 import Stars from './components/totalStars.jsx';
+import ReactDOMServer from 'react-dom/server';
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 
@@ -127,4 +128,6 @@ class Title extends Component {
   }
 }
 
+
 ReactDom.render(<Title />, document.getElementById('title'));
+

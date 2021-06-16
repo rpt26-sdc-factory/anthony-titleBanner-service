@@ -4,14 +4,13 @@ const app = express();
 const userRouter = require('./routes/routes');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const dotenv = require('dotenv');
 const path = require('path');
+
+const dotenv = require('dotenv');
 dotenv.config({ path: __dirname + '/config/config.env' });
 
 app.use(express.static(__dirname + '/../client/dist'));
-
 app.use(cors());
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
