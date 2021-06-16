@@ -29,3 +29,4 @@ newrelic_agent.log
 login.sh
 __DELETE__
 loader-io.txt
+dump.rdb
