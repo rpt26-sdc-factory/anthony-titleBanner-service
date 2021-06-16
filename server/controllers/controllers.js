@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const { pool } = require('../../db/db');
 const { redisClient } = require('../redis-client/client');
-
+const hour = 3600;
 
 // =============== GET ===============
 exports.getTitle = async (req, res) => {
@@ -10,11 +10,11 @@ exports.getTitle = async (req, res) => {
     const { id } = req.params;
     const result = await pool.query('SELECT * FROM titles WHERE id = $1', [id]);
 
-    // add redirect?!
     if (!result.rows[0]) {
       res.json({ message: `${title} is not in Database!` });
 
     } else {
+      redisClient.setex(id, hour * 24, JSON.stringify(result.rows[0]));
       res.json(result.rows[0]);
     }
 

@@ -48,7 +48,7 @@ class Title extends Component {
           // titles, etc.
           if (i === 0) {
             const { title, enrolled, reviewcounts, stars, offeredby } = res.value.data;
-
+            console.log(res.value.data)
             this.setState({
               titles: title,
               totalEnrolled: enrolled,

@@ -5,13 +5,12 @@ const { redisClient } = require('../redis-client/client');
 exports.cache = (req, res, next) => {
   const { id } = req.params;
 
-  client.get(id, (err, data) => {
+  redisClient.get(id, (err, data) => {
     if (err) throw err;
 
     if (data !== null) {
-      console.log(data);
-      res.send(data);
-      next();
+      console.log('look at me', JSON.parse(data));
+      res.send(JSON.parse(data));
     } else {
       next();
     }
