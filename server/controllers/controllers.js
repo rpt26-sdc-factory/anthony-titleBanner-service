@@ -1,9 +1,30 @@
 const express = require('express');
 const app = express();
 const { pool } = require('../../db/db');
+const { redisClient } = require('../redis-client/client');
+const hour = 3600;
 
+// =============== GET ===============
+exports.getTitle = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await pool.query('SELECT * FROM titles WHERE id = $1', [id]);
 
-// POST
+    if (!result.rows[0]) {
+      res.json({ message: `${title} is not in Database!` });
+    } else {
+      // cache to redis
+      redisClient.setex(id, hour * 24, JSON.stringify(result.rows[0]));
+      res.json(result.rows[0]);
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.end();
+  }
+};
+
+// =============== POST ===============
 exports.postTitle = async (req, res) => {
   try {
     const { title, enrolled, reviewcounts, stars, offeredby } = req.body;
@@ -18,27 +39,7 @@ exports.postTitle = async (req, res) => {
   }
 }
 
-// GET
-exports.getTitle = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const result = await pool.query('SELECT * FROM titles WHERE id = $1', [id]);
-
-    // add redirect?!
-    if (!result.rows[0]) {
-      res.json({ message: `${title} is not in Database!` });
-
-    } else {
-      res.json(result.rows[0]);
-    }
-
-  } catch (err) {
-    console.error(err);
-    res.end();
-  }
-};
-
-// PUT
+// =============== PUT ===============
 exports.putTitle = async (req, res) => {
   try {
     const { id } = req.params;
@@ -52,7 +53,7 @@ exports.putTitle = async (req, res) => {
   }
 };
 
-// DELETE
+// =============== DELETE ===============
 exports.deleteTitle = async (req, res) => {
   try {
     const { id } = req.params;

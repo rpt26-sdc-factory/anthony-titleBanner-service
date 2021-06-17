@@ -2,14 +2,15 @@ const express = require('express');
 const router = express.Router();
 const { getTitle, postTitle, putTitle, deleteTitle, loaderIO } = require('../controllers/controllers');
 const path = require('path');
+const { cache } = require('../middleware/cache')
 
 const dotenv = require('dotenv');
 dotenv.config({ path: 'config/config.env' });
 
 // Titles
 router
+  .get('/getTitle/:id', cache, getTitle)
   .post('/postTitle', postTitle)
-  .get('/getTitle/:id', getTitle)
   .put('/updateTitle/:id', putTitle)
   .delete('/deleteTitle/:id', deleteTitle);
 
