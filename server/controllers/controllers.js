@@ -12,8 +12,8 @@ exports.getTitle = async (req, res) => {
 
     if (!result.rows[0]) {
       res.json({ message: `${title} is not in Database!` });
-
     } else {
+      // cache to redis
       redisClient.setex(id, hour * 24, JSON.stringify(result.rows[0]));
       res.json(result.rows[0]);
     }

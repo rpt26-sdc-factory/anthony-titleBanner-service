@@ -7,9 +7,9 @@ exports.cache = (req, res, next) => {
 
   redisClient.get(id, (err, data) => {
     if (err) throw err;
-
+    // if data exists, response back with the data back from redis.
     if (data !== null) {
-      console.log('look at me', JSON.parse(data));
+      // console.log('look at me', JSON.parse(data));
       res.send(JSON.parse(data));
     } else {
       next();
