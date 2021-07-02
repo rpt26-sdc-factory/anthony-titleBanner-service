@@ -1,6 +1,4 @@
-# Project Name
-
-> anthony-titleBanner-service
+# Anthony TitleBanner Service
 
 ## Related Projects
 
@@ -13,6 +11,7 @@
 1. [Usage](#Usage)
 2. [Requirements](#requirements)
 3. [Development](#development)
+4. [CRUD APIs - Titles](#CRUD)
 
 ## Usage
 
@@ -50,13 +49,6 @@ From within the root directory:
 npm install -g webpack
 npm install
 ```
-
-## Travis CI
-[![Build Status](https://travis-ci.org/Ingenuity-rpt26/vinay-titleBanner-service.svg?branch=main)](https://travis-ci.org/Ingenuity-rpt26/vinay-titleBanner-service)
-
-
-## license
-![NPM](https://img.shields.io/npm/l/express)
 
 ## CRUD APIs - Titles
 ```
