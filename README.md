@@ -12,6 +12,7 @@
 2. [Requirements](#requirements)
 3. [Development](#development)
 4. [CRUD](#CRUD)
+5. [Screenshot](#Screenshot)
 
 ## Usage
 
@@ -90,6 +91,7 @@ npm install
 - Expectation: an enrolled number searched and deleted from the enrolledDB.
 ```
 
+## Screenshot
 
 
 
