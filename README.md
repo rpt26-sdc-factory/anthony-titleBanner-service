@@ -11,7 +11,7 @@
 1. [Usage](#Usage)
 2. [Requirements](#requirements)
 3. [Development](#development)
-4. [CRUD APIs - Titles](#CRUD)
+4. [CRUD APIs](#CRUD)
 
 ## Usage
 
@@ -50,7 +50,7 @@ npm install -g webpack
 npm install
 ```
 
-## CRUD APIS
+## CRUD APIs
 
 ### CRUD APIs - Titles
 ```
