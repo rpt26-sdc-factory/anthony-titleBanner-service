@@ -50,7 +50,9 @@ npm install -g webpack
 npm install
 ```
 
-## CRUD APIs - Titles
+## CRUD APIS
+
+### CRUD APIs - Titles
 ```
 - Type: POST
 - Endpoint: /postTitle
@@ -69,7 +71,7 @@ npm install
 - Expectation: a title searched and deleted from the titlesDB.
 ```
 
-## CRUD APIs - Enrolled Numbers
+### CRUD APIs - Enrolled Numbers
 ```
 - Type: POST
 - Endpoint: /postEnrolled
