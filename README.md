@@ -92,7 +92,7 @@ npm install
 ```
 
 ## Screenshot
-![Screen Shot 2021-04-10 at 12 52 58 PM](https://user-images.githubusercontent.com/31682285/124214577-4e1f4d80-daa7-11eb-9ab6-aa7f8c8ef4bb.png)
+![SDC_shane](https://user-images.githubusercontent.com/31682285/125174022-3ca90600-e177-11eb-83a3-8a3bb5640999.png)
 
 
 
